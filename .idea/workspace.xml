@@ -1,28 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dade86df-d5e0-4825-917d-80450004749c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Default Settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MenuFrames.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainGUI.py" afterDir="false" />
-    </list>
+    <list default="true" id="dade86df-d5e0-4825-917d-80450004749c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="developing" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -39,16 +27,10 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TODO_SCOPE" value="Project Files" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.MenuFrames">
-    <configuration name="MainGUI" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+  <component name="RunManager">
+    <configuration name="GUI" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Past-Paper-Crawler" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -61,51 +43,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MainGUI.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="MenuFrames" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Past-Paper-Crawler" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MenuFrames.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Test" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="Past-Paper-Crawler" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GUI.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -136,16 +74,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="Python.MainGUI" />
-      <item itemvalue="Python.MenuFrames" />
-      <item itemvalue="Python.Test" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.MenuFrames" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -158,10 +86,6 @@
       <option name="presentableId" value="Default" />
       <updated>1584330982795</updated>
       <workItem from="1584330988853" duration="1050000" />
-      <workItem from="1584332044126" duration="244000" />
-      <workItem from="1584332292359" duration="3333000" />
-      <workItem from="1584343214917" duration="10000" />
-      <workItem from="1584343972016" duration="8017000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1584331377372</created>
@@ -170,28 +94,7 @@
       <option name="project" value="LOCAL" />
       <updated>1584331377372</updated>
     </task>
-    <task id="LOCAL-00002" summary="Initial commit">
-      <created>1584332111016</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1584332111016</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Icon">
-      <created>1584332573008</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1584332573008</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Fixed the issue of opening multiple preferences frame">
-      <created>1584344382635</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1584344382635</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,76 +102,47 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
-    <MESSAGE value="Icon" />
-    <MESSAGE value="Fixed the issue of opening multiple preferences frame" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed the issue of opening multiple preferences frame" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="104" y="42" width="1071" height="697" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584332946597">
+    <state x="104" y="42" width="1071" height="697" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584331887596">
       <screen x="0" y="23" width="1280" height="716" />
     </state>
-    <state x="104" y="42" width="1071" height="697" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.716@0.23.1280.716" timestamp="1584332946597" />
-    <state x="147" y="23" key="CommitChangelistDialog2" timestamp="1584501277629">
-      <screen x="0" y="23" width="1280" height="721" />
+    <state x="104" y="42" width="1071" height="697" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.716@0.23.1280.716" timestamp="1584331887596" />
+    <state x="147" y="23" key="CommitChangelistDialog2" timestamp="1584331377041">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
-    <state x="147" y="23" key="CommitChangelistDialog2/0.23.1280.716@0.23.1280.716" timestamp="1584332572708" />
-    <state x="147" y="23" key="CommitChangelistDialog2/0.23.1280.721@0.23.1280.721" timestamp="1584501277629" />
-    <state x="147" y="23" key="CommitChangelistDialog2/0.23.1280.723@0.23.1280.723" timestamp="1584344382319" />
-    <state width="1238" height="95" key="GridCell.Tab.0.bottom" timestamp="1584365100000">
-      <screen x="0" y="23" width="1280" height="721" />
+    <state x="147" y="23" key="CommitChangelistDialog2/0.23.1280.716@0.23.1280.716" timestamp="1584331377041" />
+    <state width="619" height="99" key="GridCell.Tab.0.bottom" timestamp="1584332040837">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
-    <state width="1238" height="64" key="GridCell.Tab.0.bottom/0.23.1280.716@0.23.1280.716" timestamp="1584363927797" />
-    <state width="1238" height="95" key="GridCell.Tab.0.bottom/0.23.1280.721@0.23.1280.721" timestamp="1584365100000" />
-    <state width="1238" height="63" key="GridCell.Tab.0.bottom/0.23.1280.723@0.23.1280.723" timestamp="1584346060194" />
-    <state width="1238" height="95" key="GridCell.Tab.0.center" timestamp="1584365099999">
-      <screen x="0" y="23" width="1280" height="721" />
+    <state width="619" height="99" key="GridCell.Tab.0.bottom/0.23.1280.716@0.23.1280.716" timestamp="1584332040837" />
+    <state width="619" height="99" key="GridCell.Tab.0.center" timestamp="1584332040836">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
-    <state width="1238" height="64" key="GridCell.Tab.0.center/0.23.1280.716@0.23.1280.716" timestamp="1584363927796" />
-    <state width="1238" height="95" key="GridCell.Tab.0.center/0.23.1280.721@0.23.1280.721" timestamp="1584365099999" />
-    <state width="1238" height="63" key="GridCell.Tab.0.center/0.23.1280.723@0.23.1280.723" timestamp="1584346060193" />
-    <state width="1238" height="95" key="GridCell.Tab.0.left" timestamp="1584365099999">
-      <screen x="0" y="23" width="1280" height="721" />
+    <state width="619" height="99" key="GridCell.Tab.0.center/0.23.1280.716@0.23.1280.716" timestamp="1584332040836" />
+    <state width="619" height="99" key="GridCell.Tab.0.left" timestamp="1584332040835">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
-    <state width="1238" height="64" key="GridCell.Tab.0.left/0.23.1280.716@0.23.1280.716" timestamp="1584363927795" />
-    <state width="1238" height="95" key="GridCell.Tab.0.left/0.23.1280.721@0.23.1280.721" timestamp="1584365099999" />
-    <state width="1238" height="63" key="GridCell.Tab.0.left/0.23.1280.723@0.23.1280.723" timestamp="1584346060192" />
-    <state width="1238" height="95" key="GridCell.Tab.0.right" timestamp="1584365100000">
-      <screen x="0" y="23" width="1280" height="721" />
+    <state width="619" height="99" key="GridCell.Tab.0.left/0.23.1280.716@0.23.1280.716" timestamp="1584332040835" />
+    <state width="619" height="99" key="GridCell.Tab.0.right" timestamp="1584332040836">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
-    <state width="1238" height="64" key="GridCell.Tab.0.right/0.23.1280.716@0.23.1280.716" timestamp="1584363927797" />
-    <state width="1238" height="95" key="GridCell.Tab.0.right/0.23.1280.721@0.23.1280.721" timestamp="1584365100000" />
-    <state width="1238" height="63" key="GridCell.Tab.0.right/0.23.1280.723@0.23.1280.723" timestamp="1584346060193" />
-    <state x="128" y="82" key="MergeDialog" timestamp="1584501226577">
-      <screen x="0" y="23" width="1280" height="721" />
-    </state>
-    <state x="128" y="82" key="MergeDialog/0.23.1280.721@0.23.1280.721" timestamp="1584501226577" />
-    <state x="351" y="105" key="MultipleFileMergeDialog" timestamp="1584501226591">
-      <screen x="0" y="23" width="1280" height="721" />
-    </state>
-    <state x="351" y="105" key="MultipleFileMergeDialog/0.23.1280.721@0.23.1280.721" timestamp="1584501226591" />
+    <state width="619" height="99" key="GridCell.Tab.0.right/0.23.1280.716@0.23.1280.716" timestamp="1584332040836" />
     <state x="141" y="23" width="997" height="716" key="SettingsEditor" timestamp="1584331137876">
       <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state x="141" y="23" width="997" height="716" key="SettingsEditor/0.23.1280.716@0.23.1280.716" timestamp="1584331137876" />
-    <state x="240" y="123" key="Vcs.Push.Dialog.v2" timestamp="1584501315745">
-      <screen x="0" y="23" width="1280" height="721" />
+    <state x="240" y="122" key="Vcs.Push.Dialog.v2" timestamp="1584331433566">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
-    <state x="240" y="122" key="Vcs.Push.Dialog.v2/0.23.1280.716@0.23.1280.716" timestamp="1584332123558" />
-    <state x="240" y="123" key="Vcs.Push.Dialog.v2/0.23.1280.721@0.23.1280.721" timestamp="1584501315745" />
-    <state x="294" y="217" key="com.intellij.ide.util.TipDialog" timestamp="1584343218040">
-      <screen x="0" y="23" width="1280" height="723" />
+    <state x="240" y="122" key="Vcs.Push.Dialog.v2/0.23.1280.716@0.23.1280.716" timestamp="1584331433566" />
+    <state x="294" y="215" key="com.intellij.ide.util.TipDialog" timestamp="1584331035517">
+      <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state x="294" y="215" key="com.intellij.ide.util.TipDialog/0.23.1280.716@0.23.1280.716" timestamp="1584331035517" />
-    <state x="294" y="217" key="com.intellij.ide.util.TipDialog/0.23.1280.723@0.23.1280.723" timestamp="1584343218040" />
-    <state x="325" y="102" key="git4idea.branch.GitSmartOperationDialog" timestamp="1584501202163">
-      <screen x="0" y="23" width="1280" height="721" />
-    </state>
-    <state x="325" y="102" key="git4idea.branch.GitSmartOperationDialog/0.23.1280.721@0.23.1280.721" timestamp="1584501202163" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Past_Paper_Crawler$MenuFrames.coverage" NAME="MenuFrames Coverage Results" MODIFIED="1584365099988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Past_Paper_Crawler$Test.coverage" NAME="Test Coverage Results" MODIFIED="1584332948536" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Past_Paper_Crawler$GUI.coverage" NAME="MainGUI Coverage Results" MODIFIED="1584359202737" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Past_Paper_Crawler$Past_Paper_Crawler.coverage" NAME="GUI Coverage Results" MODIFIED="1584331295957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -9,11 +9,6 @@ import platform
 import subprocess
 
 
-def on_preferences(event):
-    preferences_frame = PreferencesFrame()
-    preferences_frame.Show()
-
-
 class MainFrame(wx.Frame):
     def __init__(self):
         wx.Frame.__init__(self, None, -1, "Past paper Crawler", size=(510, 585))
@@ -114,9 +109,9 @@ class MainFrame(wx.Frame):
         self.Bind(wx.EVT_MENU, self.on_about, self.about)
         menu.Append(self.about)
 
-        preferences = wx.MenuItem(menu, wx.ID_PREFERENCES, '&Preferences...\tCtrl+,')
-        self.Bind(wx.EVT_MENU, on_preferences, preferences)
-        menu.Append(preferences)
+        self.preferences = wx.MenuItem(menu, wx.ID_PREFERENCES, '&Preferences...\tCtrl+,')
+        self.Bind(wx.EVT_MENU, self.on_preferences, self.preferences)
+        menu.Append(self.preferences)
 
         # For different system
         if platform.system() == "Darwin":
@@ -131,8 +126,16 @@ class MainFrame(wx.Frame):
         about_frame.Show()
         self.Unbind(wx.EVT_MENU, self.about)
 
+    def on_preferences(self, event):
+        preferences_frame = PreferencesFrame(self.rebind_preferences)
+        preferences_frame.Show()
+        self.Unbind(wx.EVT_MENU, self.preferences)
+
     def rebind_about(self):
         self.Bind(wx.EVT_MENU, self.on_about, self.about)
+
+    def rebind_preferences(self):
+        self.Bind(wx.EVT_MENU, self.on_preferences, self.preferences)
 
     def level_chosen(self, event):
         level = self.level_choice.GetStringSelection()  # Get level chosen
@@ -470,16 +473,21 @@ class AboutFrame(wx.Frame):
 
 
 class PreferencesFrame(wx.Frame):
-    def __init__(self):
+    def __init__(self, call):
         # wx.Frame.__init__(self, None, style=wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX)
         wx.Frame.__init__(self, None)
         self.init_UI()
+        self.call = call
 
     def init_UI(self):
         preference = wx.Notebook(self)
         preference.AddPage(GeneralPanel(preference), "General")
         preference.AddPage(CachePanel(preference), "Cache")
         self.Show()
+
+    def on_close(self, event):
+        self.Destroy()
+        self.call()
 
     
 class GeneralPanel(wx.Panel):
@@ -491,12 +499,13 @@ class CachePanel(wx.Panel):
     def __init__(self, parent):
         wx.Panel.__init__(self, parent)
         explain_txt = wx.StaticText(self, label="Past Paper Crawler caches viewed web pages to memory and disk to boost efficiency.")
+        explain_txt.Wrap(None)
         hint_txt = wx.StaticText(self, label="Current cache on the disk:")
         open_button = wx.Button(self, label="open folder")
         self.Bind(wx.EVT_BUTTON, self.on_open, open_button)
 
         global cache_folder
-        cache_list = os.listdir(cache_folder)
+        cache_list = [file for file in os.listdir(cache_folder) if not file.startswith(".")]
         cache_checklist = wx.CheckListBox(self, choices=cache_list)
 
         open_cache_sizer = wx.BoxSizer(wx.HORIZONTAL)
@@ -506,7 +515,7 @@ class CachePanel(wx.Panel):
         cache_sizer = wx.BoxSizer(wx.VERTICAL)
         cache_sizer.Add(explain_txt, flag=wx.BOTTOM, border=10)
         cache_sizer.Add(open_cache_sizer, flag=wx.BOTTOM, border=10)
-        cache_sizer.Add(cache_checklist, flag=wx.ALIGN_CENTER_HORIZONTAL | wx.BOTTOM, border=10)
+        cache_sizer.Add(cache_checklist, flag=wx.ALIGN_CENTER_HORIZONTAL | wx.EXPAND | wx.BOTTOM, border=10)
         self.SetSizer(cache_sizer)
 
     @staticmethod

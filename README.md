@@ -1,3 +1,6 @@
+# Past Paper Crawler
+A program that can help you to download CIE past paper from GCE guide.
+
 ## To do
 - Finish preference
 - Check for update

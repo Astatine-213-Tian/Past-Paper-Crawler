@@ -17,7 +17,7 @@ def load(directory):
     return data
 
 
-def cache_folder():
+def get_cache_directory():
     path = os.getcwd()
     if platform.system() == "Darwin":
         cache_path = "/Users/" + path.split("/")[2] + "/Library/Caches/Teresa.PastPaperCrawler"
@@ -28,23 +28,3 @@ def cache_folder():
         os.mkdir(cache_path)
 
     return cache_path
-
-
-def customized_directory():
-    customized_path = os.path.join(cache_folder(), "Customized")
-
-    if not os.path.exists(customized_path):
-        os.mkdir(customized_path)
-
-    return customized_path
-
-
-def preference_directory():
-    preference_path = os.path.join(cache_folder(), "preference-config")
-
-    if not os.path.exists(preference_path):
-        # Default setting
-        setting = {"Default path mode": False, "Default path": "", "Paper folder mode": True, "Skip exist file": True}
-        store(setting, preference_path)
-
-    return preference_path

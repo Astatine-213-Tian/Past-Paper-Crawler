@@ -1,37 +1,60 @@
-## Welcome to GitHub Pages
+## To do
+- Finish preference
+- Check for update
+- Sort paper by year
+- Allow multiple selection in filter
 
-You can use the [editor on GitHub](https://github.com/Astatine-213-Tian/Past-Paper-Crawler/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Update log
 
-### Markdown
+## v 1.2
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### 1.2.3
 
-```markdown
-Syntax highlighted code block
+- [Bug Fixed] Inhibit multiple same frames to open at the same time
+- [Bug Fixed] Fixed some arrangement issues on windows
+- [Bug Fixed] Fixed the issue that when selecting the individual file mode then changing the subject, the display mode will not change while the selection is initialized to pair mode
+- [Bug Fixed] Fixed the issue of not pairing all papers in pair mode
 
-# Header 1
-## Header 2
-### Header 3
+### 1.2.2
 
-- Bulleted
-- List
+- [New Function] Cache subject and paper list information in local file
+- [Enhancement] Solve the low resolution issue for compiled file
+- [New Function] Add about us
+- [New Function] Add a logo
 
-1. Numbered
-2. List
+### 1.2.1
 
-**Bold** and _Italic_ and `Code` text
+- [Bugs fixed]
+    - Prevent hiding type filter when switching back to pair mode
+    - Inhibit chose of style before paper finished loading
+- [Enhancement] Increase filter's speed
+- [Enhancement] Add "Paper" and "Region" for hint in the filter
+- [Enhancement] Make RetryFrame always float on the top
 
-[Link](url) and ![Image](src)
-```
+### 1.2.0
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+- [Enhancement] Reconstruct GUI by using BoxSizer
+- [New Function] Allow filtering individual by paper type - qp, ms, er ....
+- [Enhancement] Merger win and mac version into one file
 
-### Jekyll Themes
+## v 1.1
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Astatine-213-Tian/Past-Paper-Crawler/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### 1.1.1
 
-### Support or Contact
+- [Bugs fixed] Reset the paper list when switching subjects / levels
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### 1.1.0
+
+- [New Function] Add progress bar
+- [New Function] Allow download to be cancelled
+
+## v 1.0
+
+### 1.0
+
+- [New Function] Implement crawler module (source - GCE guide)
+- [New Function] Implement GUI
+    - Allow filtering paper by subject, season, paper number, region
+    - Select All paper and download
+- [New Function] Implement multitasking when downloading

@@ -1,85 +1,37 @@
-# Past-Paper-Crawler
-A crawler that can help you download CIE past paper from GCE guide.
+## Welcome to GitHub Pages
 
+You can use the [editor on GitHub](https://github.com/Astatine-213-Tian/Past-Paper-Crawler/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
+Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-# To do
+### Markdown
 
-* Sort paper by year
+Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-* Automatically check for new version of the software
+```markdown
+Syntax highlighted code block
 
-* Automatically check for update in cache
+# Header 1
+## Header 2
+### Header 3
 
-* Allow multiple selection in filter
+- Bulleted
+- List
 
-* Skip downloaded file
+1. Numbered
+2. List
 
-* Allow option - create folder for each type of paper
+**Bold** and _Italic_ and `Code` text
 
-  
+[Link](url) and ![Image](src)
+```
 
-# Update log
+For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-## v 1.3
+### Jekyll Themes
 
-### 1.3.1
+Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Astatine-213-Tian/Past-Paper-Crawler/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-* [Bug Fixed] Add error message when default download path doesn't exist
+### Support or Contact
 
-### 1.3.0
-
-- [New Function] Add preference frame - allow user to remove the cache
-- [New Function] Add preference frame - allow user to set default download route
-- [New Function] Add about us
-
-## v 1.2
-
-### 1.2.3
-
-- [Bug Fixed] Inhibit multiple same frames to open at the same time
-- [Bug Fixed] Fixed some arrangement issues on windows
-- [Bug Fixed] Fixed the issue that when selecting the individual file mode then changing the subject, the display mode will not change while the selection is initialized to pair mode
-- [Bug Fixed] Fixed the issue of not pairing all papers in pair mode
-
-### 1.2.2
-
-- [New Function] Cache subject and paper list information in local file
-- [Enhancement] Solve the low resolution issue for compiled file
-- [New Function] Add a logo
-
-### 1.2.1
-
-- [Bugs fixed]
-  - Prevent hiding type filter when switching back to pair mode
-  - Inhibit chose of style before paper finished loading
-- [Enhancement] Increase filter's speed
-- [Enhancement] Add "Paper" and "Region" for hint in the filter
-- [Enhancement] Make RetryFrame always float on the top
-
-### 1.2.0
-
-- [Enhancement] Reconstruct GUI by using BoxSizer
-- [New Function] Allow filtering individual by paper type - qp, ms, er ....
-- [Enhancement] Merger win and mac version into one file
-
-## v 1.1
-
-### 1.1.1
-
-- [Bugs fixed] Reset the paper list when switching subjects / levels
-
-### 1.1.0
-
-- [New Function] Add progress bar
-- [New Function] Allow download to be cancelled
-
-## v 1.0
-
-### 1.0
-
-- Implement crawler module (source - GCE guide)
-- Implement GUI
-  - Allow filtering paper by subject, season, paper number, region
-  - Select All paper and download
-- Implement multitasking when downloading
+Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.

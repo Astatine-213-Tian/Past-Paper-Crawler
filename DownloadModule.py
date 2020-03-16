@@ -21,7 +21,7 @@ def _download_single(url, to, id):
     """
     Download a URL f_in to a dir.
     :param url: URL to download from.
-    :param to: Full default_directory. Includes f_in and its suffix. e.g. ./files/9709_s16_ms_21.pdf
+    :param to: Full directory. Includes f_in and its suffix. e.g. ./files/9709_s16_ms_21.pdf
     :return: None
     """
 
@@ -152,7 +152,7 @@ def download(urls, to_dir, threads=10, timeout=10):
     Download multiple URLs at the same time.
 
     :param urls: [Array of String] URLs to download. e.g. [.../9709_s16_ms_21.pdf, .../9709_s16_ms_22.pdf]
-    :param to_dir: String, default_directory to download e.g. "./9709/"
+    :param to_dir: String, directory to download e.g. "./9709/"
     :param threads: Number of files downloading at the same time
     :param timeout: [int] Time in seconds for timeout. When timeout a new same thread will be started.
     :return: [Array of String] Failed files

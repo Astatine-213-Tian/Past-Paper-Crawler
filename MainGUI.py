@@ -1,12 +1,12 @@
 import wx
 import Crawler
 from PaperInfo import Paper, Pair
+from MenuFrames import *
 import DownloadModule
 import Cache
 import os
 import time
 import platform
-import subprocess
 
 
 class MainFrame(wx.Frame):
@@ -23,8 +23,8 @@ class MainFrame(wx.Frame):
         self.directory = ""  # Record the root folder the user choose to save the f_in
         self.year, self.season, self.num, self.region, self.type = "All years", "All seasons", "All papers", "All regions", "All types"  # Record the subject, season, num, region, chosen by the user
 
-        self.pairs_list, self.pairs_info = [], {}  # Store the information of question paper and corresponding mark scheme
-        self.files_list, self.files_info = [], {}  # Store the information of each individual f_in
+        self.pairs_info = {}  # Store the information of question paper and corresponding mark scheme
+        self.files_info = {}  # Store the information of each individual f_in
 
         self.level_choice = wx.Choice(self, choices=self.level_list)  # Choosing the level
         self.level_choice.SetSelection(0)
@@ -152,7 +152,7 @@ class MainFrame(wx.Frame):
             return
 
         # Cache
-        global cache_folder
+        cache_folder = Cache.get_cache_directory()
         cache_subject = os.path.join(cache_folder, "GCE Guide %s" % level)
         if not os.path.exists(cache_subject):
             self.subject_dict = Crawler.visit_level(Crawler.levels_dict[level])  # Return subject list
@@ -186,7 +186,7 @@ class MainFrame(wx.Frame):
             return
 
         # Cache
-        global cache_folder
+        cache_folder = Cache.get_cache_directory()
         cache_paper = os.path.join(cache_folder, "GCE Guide %s" % subject)
         if not os.path.exists(cache_paper):
             self.paper_dict = Crawler.visit_subject(subject_url)  # Get paper list
@@ -233,9 +233,6 @@ class MainFrame(wx.Frame):
                     self.pairs_info[pair.display()] = pair
                     break
 
-        self.pairs_list = [each for each in self.pairs_info]  # Store the name of the pairing files for display
-        self.files_list = [each for each in self.files_info]  # Store the name of the individual files for display
-
         self.year_choice.Set(year_list)
         self.year_choice.SetSelection(0)
         self.season_choice.Set(season_list)
@@ -250,9 +247,9 @@ class MainFrame(wx.Frame):
         self.style_chosen(None)
 
         if self.paired:  # Display information according to the display style
-            self.paper_checklist.Set(self.pairs_list)
+            self.paper_checklist.Set([each for each in self.pairs_info])
         else:
-            self.paper_checklist.Set(self.files_list)
+            self.paper_checklist.Set([each for each in self.files_info])
 
     def year_chosen(self, event):  # when year is chosen
         self.year = self.year_choice.GetStringSelection()
@@ -322,8 +319,7 @@ class MainFrame(wx.Frame):
             to_filter = {pair_name: pair_object for pair_name, pair_object in to_filter.items() if
                          pair_object.region == self.region}
 
-        self.pairs_list = [pair for pair in to_filter]
-        self.paper_checklist.Set(self.pairs_list)
+        self.paper_checklist.Set([pair for pair in to_filter])
 
     def style_chosen(self, event):  # when display style was chosen
         self.paired = True if self.style_choice.GetSelection() == 0 else False
@@ -339,16 +335,16 @@ class MainFrame(wx.Frame):
 
     def select_all(self, event):  # when select all is pressed
         if self.paired:
-            if len(self.paper_checklist.GetCheckedItems()) != len(self.pairs_list):
-                self.paper_checklist.SetCheckedItems(range(len(self.pairs_list)))
+            if len(self.paper_checklist.GetCheckedItems()) != self.paper_checklist.GetCount():
+                self.paper_checklist.SetCheckedItems(range(self.paper_checklist.GetCount()))
             else:
-                for i in range(len(self.pairs_list)):
+                for i in range(self.paper_checklist.GetCount()):
                     self.paper_checklist.Check(i, check=False)
         else:
-            if len(self.paper_checklist.GetCheckedItems()) != len(self.files_list):
-                self.paper_checklist.SetCheckedItems(range(len(self.files_list)))
+            if len(self.paper_checklist.GetCheckedItems()) != self.paper_checklist.GetCount():
+                self.paper_checklist.SetCheckedItems(range(self.paper_checklist.GetCount()))
             else:
-                for i in range(len(self.files_list)):
+                for i in range(self.paper_checklist.GetCount()):
                     self.paper_checklist.Check(i, check=False)
 
     def pre_download(self, event):
@@ -435,102 +431,7 @@ class RetryFrame(wx.Dialog):  # New frame to display f_in that need to retry
         self.call(self.retry_file.GetCheckedStrings())
 
 
-class AboutFrame(wx.Frame):
-    def __init__(self, call):
-        wx.Frame.__init__(self, None, -1, size=(300, 160), style=wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX)
-
-        title = wx.StaticText(self, label="Past Paper Crawler")
-        title_font = wx.Font(wx.FontInfo(13).Bold().FaceName("Arial"))
-        title.SetFont(title_font)
-
-        version = wx.StaticText(self, label="Version 1.2.2")
-        team = wx.StaticText(self, label="Made by Teresa, John, Ethan, and Peter")
-        maintenance = wx.StaticText(self, label="Currently maintained by Teresa")
-        thanks = wx.StaticText(self, label="Inspired by Past Paper Crawler created by Raymond")
-
-        content_font = wx.Font(wx.FontInfo(10))
-        version.SetFont(content_font)
-        team.SetFont(content_font)
-        maintenance.SetFont(content_font)
-        thanks.SetFont(content_font)
-
-        bottom_border = 10
-        sizer = wx.BoxSizer(wx.VERTICAL)
-        sizer.Add(title, flag=wx.ALIGN_CENTER | wx.BOTTOM | wx.TOP, border=bottom_border | bottom_border)
-        sizer.Add(version, flag=wx.ALIGN_CENTER | wx.BOTTOM, border=bottom_border)
-        sizer.Add(team, flag=wx.ALIGN_CENTER | wx.BOTTOM, border=bottom_border)
-        sizer.Add(maintenance, flag=wx.ALIGN_CENTER | wx.BOTTOM, border=bottom_border)
-        sizer.Add(thanks, flag=wx.ALIGN_CENTER | wx.BOTTOM, border=bottom_border)
-
-        self.SetSizer(sizer)
-
-        self.call = call
-        self.Bind(wx.EVT_CLOSE, self.on_close, self)
-
-    def on_close(self, event):
-        self.Destroy()
-        self.call()
-
-
-class PreferencesFrame(wx.Frame):
-    def __init__(self, call):
-        # wx.Frame.__init__(self, None, style=wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX)
-        wx.Frame.__init__(self, None)
-        self.init_UI()
-        self.call = call
-
-    def init_UI(self):
-        preference = wx.Notebook(self)
-        preference.AddPage(GeneralPanel(preference), "General")
-        preference.AddPage(CachePanel(preference), "Cache")
-        self.Show()
-
-    def on_close(self, event):
-        self.Destroy()
-        self.call()
-
-    
-class GeneralPanel(wx.Panel):
-    def __init__(self, parent):
-        wx.Panel.__init__(self, parent)
-
-
-class CachePanel(wx.Panel):
-    def __init__(self, parent):
-        wx.Panel.__init__(self, parent)
-        explain_txt = wx.StaticText(self, label="Past Paper Crawler caches viewed web pages to memory and disk to boost efficiency.")
-        explain_txt.Wrap(None)
-        hint_txt = wx.StaticText(self, label="Current cache on the disk:")
-        open_button = wx.Button(self, label="open folder")
-        self.Bind(wx.EVT_BUTTON, self.on_open, open_button)
-
-        global cache_folder
-        cache_list = [file for file in os.listdir(cache_folder) if not file.startswith(".")]
-        cache_checklist = wx.CheckListBox(self, choices=cache_list)
-
-        open_cache_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        open_cache_sizer.Add(hint_txt)
-        open_cache_sizer.Add(open_button)
-
-        cache_sizer = wx.BoxSizer(wx.VERTICAL)
-        cache_sizer.Add(explain_txt, flag=wx.BOTTOM, border=10)
-        cache_sizer.Add(open_cache_sizer, flag=wx.BOTTOM, border=10)
-        cache_sizer.Add(cache_checklist, flag=wx.ALIGN_CENTER_HORIZONTAL | wx.EXPAND | wx.BOTTOM, border=10)
-        self.SetSizer(cache_sizer)
-
-    @staticmethod
-    def on_open(event):
-        global cache_folder
-        if platform.system() == "Darwin":
-            subprocess.call(["open", cache_folder])
-        else:
-            subprocess.Popen("explorer %s" % cache_folder)
-
-
-cache_folder = Cache.get_cache_directory()
-
 if __name__ == '__main__':
-
     app = wx.App()
     frame = MainFrame()
     frame.Show()

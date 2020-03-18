@@ -47,6 +47,7 @@ class PreferencesFrame(wx.Frame):
         wx.Frame.__init__(self, None, style=wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX, size=(400, 485))
         self.init_UI()
         self.call = call
+        self.Bind(wx.EVT_CLOSE, self.on_close, self)
 
     def init_UI(self):
         preference = wx.Notebook(self)

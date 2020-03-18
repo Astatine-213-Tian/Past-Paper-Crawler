@@ -1,12 +1,9 @@
-import wx
-import Crawler
-from PaperInfo import Paper, Pair
-from MenuFrames import *
-import DownloadModule
-import Cache
-import os
 import time
-import platform
+
+import Crawler
+import DownloadModule
+from MenuFrames import *
+from PaperInfo import Paper, Pair
 
 
 class MainFrame(wx.Frame):
@@ -405,8 +402,6 @@ class MainFrame(wx.Frame):
             progress_bar.Update(status['F'], "Finish downloading %d/%d files" % (status['F'], total_files))
             time.sleep(1)
 
-        progress_bar.Destroy()
-
         error_files = DownloadModule.failed_names
         # selected_paper = self.paper_checklist.GetCheckedItems()
         if error_files:
@@ -425,23 +420,37 @@ class MainFrame(wx.Frame):
     def call_back(self, value):  # Link with RetryFrame
         if value:
             retry_urls = [self.paper_dict[each] for each in value]
-            print(retry_urls)
             self.download(retry_urls)
 
 
 class RetryFrame(wx.Dialog):  # New frame to display f_in that need to retry
     def __init__(self, parent, retry_files, call):
-        wx.Dialog.__init__(self, parent, -1, size=(300, 340))
-        wx.StaticText(self, pos=(15, 10), label="Failed to download:")
-        self.retry_file = wx.CheckListBox(self, -1, pos=(15, 30), size=(270, 250), choices=retry_files)
+        wx.Dialog.__init__(self, parent, size=(300, 350))
+        hint = wx.StaticText(self, label="Failed to download:")
+        self.retry_file = wx.CheckListBox(self, size=(270, 250), choices=retry_files)
         self.retry_file.SetCheckedItems(range(len(retry_files)))
-        retry_button = wx.Button(self, -1, pos=(210, 285), size=(75, 20), label="Retry")
-        retry_button.Bind(wx.EVT_BUTTON, self.retry, retry_button)
+        retry_button = wx.Button(self, size=(75, -1), label="Retry")
+        self.Bind(wx.EVT_BUTTON, self.retry, retry_button)
+
+        retry_sizer = wx.BoxSizer(wx.VERTICAL)
+        retry_sizer.AddSpacer(10)
+        retry_sizer.Add(hint, flag=wx.LEFT, border=15)
+        retry_sizer.AddSpacer(10)
+        retry_sizer.Add(self.retry_file, flag=wx.ALIGN_CENTER_HORIZONTAL)
+        retry_sizer.AddSpacer(10)
+        retry_sizer.Add(retry_button, flag=wx.ALIGN_RIGHT|wx.RIGHT, border=15)
+        self.SetSizer(retry_sizer)
 
         self.call = call
 
+        self.code = self.GetReturnCode()
+        self.Bind(wx.EVT_CLOSE, self.on_close)
+
+    def on_close(self, event):
+        self.EndModal(self.code)
+
     def retry(self, event):
-        self.Destroy()
+        self.EndModal(self.code)
         self.call(self.retry_file.GetCheckedStrings())
 
 

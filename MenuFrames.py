@@ -86,6 +86,8 @@ class GeneralPanel(wx.Panel):
         set_path_sizer.Add(default_radio_button, flag=wx.ALIGN_CENTER_VERTICAL)
         set_path_sizer.Add(change_button, flag=wx.LEFT | wx.ALIGN_CENTER_VERTICAL, border=5)
 
+        split = wx.StaticLine(self, style=wx.LI_HORIZONTAL)
+
         border = 10
 
         general_sizer = wx.BoxSizer(wx.VERTICAL)
@@ -96,6 +98,8 @@ class GeneralPanel(wx.Panel):
         general_sizer.Add(set_path_sizer, flag=wx.LEFT, border=border)
         general_sizer.AddSpacer(2)
         general_sizer.Add(self.default_directory, flag=wx.LEFT, border=25)
+        general_sizer.AddSpacer(4)
+        general_sizer.Add(split, flag=wx.GROW)
         self.SetSizer(general_sizer)
 
     def on_radio_button(self, event):

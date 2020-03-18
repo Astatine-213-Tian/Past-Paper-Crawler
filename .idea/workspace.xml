@@ -137,9 +137,9 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.Test" />
       <item itemvalue="Python.MainGUI" />
       <item itemvalue="Python.MenuFrames" />
+      <item itemvalue="Python.Test" />
     </list>
     <recent_temporary>
       <list>
@@ -208,10 +208,11 @@
       <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state x="104" y="42" width="1071" height="697" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.716@0.23.1280.716" timestamp="1584332946597" />
-    <state x="147" y="23" key="CommitChangelistDialog2" timestamp="1584344382319">
-      <screen x="0" y="23" width="1280" height="723" />
+    <state x="147" y="23" key="CommitChangelistDialog2" timestamp="1584501277629">
+      <screen x="0" y="23" width="1280" height="721" />
     </state>
     <state x="147" y="23" key="CommitChangelistDialog2/0.23.1280.716@0.23.1280.716" timestamp="1584332572708" />
+    <state x="147" y="23" key="CommitChangelistDialog2/0.23.1280.721@0.23.1280.721" timestamp="1584501277629" />
     <state x="147" y="23" key="CommitChangelistDialog2/0.23.1280.723@0.23.1280.723" timestamp="1584344382319" />
     <state width="1238" height="95" key="GridCell.Tab.0.bottom" timestamp="1584365100000">
       <screen x="0" y="23" width="1280" height="721" />
@@ -249,10 +250,11 @@
       <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state x="141" y="23" width="997" height="716" key="SettingsEditor/0.23.1280.716@0.23.1280.716" timestamp="1584331137876" />
-    <state x="240" y="122" key="Vcs.Push.Dialog.v2" timestamp="1584332123558">
-      <screen x="0" y="23" width="1280" height="716" />
+    <state x="240" y="123" key="Vcs.Push.Dialog.v2" timestamp="1584501315745">
+      <screen x="0" y="23" width="1280" height="721" />
     </state>
     <state x="240" y="122" key="Vcs.Push.Dialog.v2/0.23.1280.716@0.23.1280.716" timestamp="1584332123558" />
+    <state x="240" y="123" key="Vcs.Push.Dialog.v2/0.23.1280.721@0.23.1280.721" timestamp="1584501315745" />
     <state x="294" y="217" key="com.intellij.ide.util.TipDialog" timestamp="1584343218040">
       <screen x="0" y="23" width="1280" height="723" />
     </state>

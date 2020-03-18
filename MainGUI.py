@@ -1,5 +1,4 @@
 import time
-
 import Crawler
 import DownloadModule
 from MenuFrames import *
@@ -11,7 +10,7 @@ class MainFrame(wx.Frame):
         wx.Frame.__init__(self, None, -1, "Past paper Crawler", size=(520, 580))
 
         self.level_list = ["--- Select level ---", "IGCSE", "AS & A-Level", "O-Level"]
-        self.type_list = []
+        self.type_dict = {"All types": "All types", "Question Paper": "qp", "Mark Scheme": "ms", "Examiner Report": "er", "Grade Threshold": "gt", "Specimen Paper": "sp", "other": "other"}
         self.subject_dict = {}  # A dictionary of subjects available return from Crawler. (key: subject name, value: subject url)
         self.paper_dict = {}  # A dictionary of papers available return from Crawler. (key: f_in name, [value]: paper ur)
         self.paired = True
@@ -49,7 +48,7 @@ class MainFrame(wx.Frame):
         download = wx.Button(self, label="Download", size=(60, -1))  # Download button
         self.Bind(wx.EVT_BUTTON, self.pre_download, download)
 
-        self.type_choice = wx.Choice(self, size=(40, -1))
+        self.type_choice = wx.Choice(self, size=(40, -1), choices=[key for key in self.type_dict])
         self.type_choice.Bind(wx.EVT_CHOICE, self.type_chosen)
         self.type_choice.Hide()
 
@@ -222,7 +221,6 @@ class MainFrame(wx.Frame):
         season_list = ("All seasons", "March", "May/June", "November", "other")
         num_list = ["All papers"] + sorted(list(set(nums)))
         region_list = ["All regions"] + sorted(list(set(regions)))
-        self.type_list = ["All types", "qp", "ms"] + sorted(list(set(types))) + ["other"]
 
         for i in range(len(qp)):
             for each in ms:
@@ -279,7 +277,7 @@ class MainFrame(wx.Frame):
             self.filter_files()
 
     def type_chosen(self, event):
-        self.type = self.type_choice.GetStringSelection()
+        self.type = self.type_dict[self.type_choice.GetStringSelection()]
         self.filter_files()
 
     def filter_files(self):  # filter individual files which meet the requirement
@@ -329,7 +327,6 @@ class MainFrame(wx.Frame):
         else:
             self.hint.SetLabel("All files are shown.")
             self.filter_files()
-            self.type_choice.Set(self.type_list)
             self.type_choice.Show()
 
     def select_all(self, event):  # when select all is pressed
@@ -388,7 +385,7 @@ class MainFrame(wx.Frame):
         DownloadModule.download_thread(urls, self.directory)
 
         # Show progress
-        progress_bar = wx.ProgressDialog("Progress", "Start downloading files", maximum=total_files,
+        progress_bar = wx.ProgressDialog("Progress", "Start downloading files", maximum=total_files, parent=self,
                                          style=wx.PD_CAN_ABORT)
         time.sleep(1)
         while DownloadModule.running:

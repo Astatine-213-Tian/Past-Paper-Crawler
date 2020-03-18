@@ -1,37 +1,74 @@
-## Welcome to GitHub Pages
+# Past-Paper-Crawler
+A crawler that can help you download CIE past paper from GCE guide.
 
-You can use the [editor on GitHub](https://github.com/Astatine-213-Tian/Past-Paper-Crawler/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+# To do
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+* Sort paper by year
+* Automatically check for update
+* Allow multiple selection in filter
+* Automatically update the cache
+* Skip downloaded file
+* Allow option - create folder for each type of paper
 
-```markdown
-Syntax highlighted code block
+# Update log
 
-# Header 1
-## Header 2
-### Header 3
+## v 1.3
 
-- Bulleted
-- List
+### 1.3.0
 
-1. Numbered
-2. List
+- [New Function] Add preference frame - allow user to remove the cache
+- [New Function] Add preference frame - allow user to set default download route
+- [New Function] Add about us
 
-**Bold** and _Italic_ and `Code` text
+## v 1.2
 
-[Link](url) and ![Image](src)
-```
+### 1.2.3
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+- [Bug Fixed] Inhibit multiple same frames to open at the same time
+- [Bug Fixed] Fixed some arrangement issues on windows
+- [Bug Fixed] Fixed the issue that when selecting the individual file mode then changing the subject, the display mode will not change while the selection is initialized to pair mode
+- [Bug Fixed] Fixed the issue of not pairing all papers in pair mode
 
-### Jekyll Themes
+### 1.2.2
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Astatine-213-Tian/Past-Paper-Crawler/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+- [New Function] Cache subject and paper list information in local file
+- [Enhancement] Solve the low resolution issue for compiled file
+- [New Function] Add a logo
 
-### Support or Contact
+### 1.2.1
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+- [Bugs fixed]
+  - Prevent hiding type filter when switching back to pair mode
+  - Inhibit chose of style before paper finished loading
+- [Enhancement] Increase filter's speed
+- [Enhancement] Add "Paper" and "Region" for hint in the filter
+- [Enhancement] Make RetryFrame always float on the top
+
+### 1.2.0
+
+- [Enhancement] Reconstruct GUI by using BoxSizer
+- [New Function] Allow filtering individual by paper type - qp, ms, er ....
+- [Enhancement] Merger win and mac version into one file
+
+## v 1.1
+
+### 1.1.1
+
+- [Bugs fixed] Reset the paper list when switching subjects / levels
+
+### 1.1.0
+
+- [New Function] Add progress bar
+- [New Function] Allow download to be cancelled
+
+## v 1.0
+
+### 1.0
+
+- Implement crawler module (source - GCE guide)
+- Implement GUI
+  - Allow filtering paper by subject, season, paper number, region
+  - Select All paper and download
+- Implement multitasking when downloading

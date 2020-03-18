@@ -1,14 +1,26 @@
-# Past Paper Crawler
-A program that can help you to download CIE past paper from GCE guide.
-
-## To do
-- Finish preference
-- Check for update
-- Sort paper by year
-- Allow multiple selection in filter
+# Past-Paper-Crawler
+A crawler that can help you download CIE past paper from GCE guide.
 
 
-## Update log
+
+# To do
+
+* Sort paper by year
+* Automatically check for update
+* Allow multiple selection in filter
+* Automatically update the cache
+* Skip downloaded file
+* Allow option - create folder for each type of paper
+
+# Update log
+
+## v 1.3
+
+### 1.3.0
+
+- [New Function] Add preference frame - allow user to remove the cache
+- [New Function] Add preference frame - allow user to set default download route
+- [New Function] Add about us
 
 ## v 1.2
 
@@ -23,14 +35,13 @@ A program that can help you to download CIE past paper from GCE guide.
 
 - [New Function] Cache subject and paper list information in local file
 - [Enhancement] Solve the low resolution issue for compiled file
-- [New Function] Add about us
 - [New Function] Add a logo
 
 ### 1.2.1
 
 - [Bugs fixed]
-    - Prevent hiding type filter when switching back to pair mode
-    - Inhibit chose of style before paper finished loading
+  - Prevent hiding type filter when switching back to pair mode
+  - Inhibit chose of style before paper finished loading
 - [Enhancement] Increase filter's speed
 - [Enhancement] Add "Paper" and "Region" for hint in the filter
 - [Enhancement] Make RetryFrame always float on the top
@@ -56,8 +67,8 @@ A program that can help you to download CIE past paper from GCE guide.
 
 ### 1.0
 
-- [New Function] Implement crawler module (source - GCE guide)
-- [New Function] Implement GUI
-    - Allow filtering paper by subject, season, paper number, region
-    - Select All paper and download
-- [New Function] Implement multitasking when downloading
+- Implement crawler module (source - GCE guide)
+- Implement GUI
+  - Allow filtering paper by subject, season, paper number, region
+  - Select All paper and download
+- Implement multitasking when downloading

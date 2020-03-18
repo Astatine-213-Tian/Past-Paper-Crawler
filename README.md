@@ -27,8 +27,7 @@ pip3 install module_name -i https://pypi.douban.com/simple/
 
 ### After download
 
-1. Put all files inside one folder
-2. Run the script `MainGUI.py`
+1. Run the script `MainGUI.py`
 
 
 
@@ -55,6 +54,7 @@ pip3 install module_name -i https://pypi.douban.com/simple/
 ### 1.3.1
 
 * [Bug Fixed] Add error message when default download path doesn't exist
+* [Enhancement] Adjust the arrangement on windows
 
 ### 1.3.0
 

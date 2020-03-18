@@ -48,4 +48,3 @@ def preference_directory():
         store(setting, preference_path)
 
     return preference_path
-

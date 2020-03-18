@@ -11,7 +11,7 @@ import platform
 
 class MainFrame(wx.Frame):
     def __init__(self):
-        wx.Frame.__init__(self, None, -1, "Past paper Crawler", size=(510, 585))
+        wx.Frame.__init__(self, None, -1, "Past paper Crawler", size=(520, 580))
 
         self.level_list = ["--- Select level ---", "IGCSE", "AS & A-Level", "O-Level"]
         self.type_list = []
@@ -33,33 +33,33 @@ class MainFrame(wx.Frame):
         self.subject_choice = wx.Choice(self)  # Choosing the subject
         self.subject_choice.Bind(wx.EVT_CHOICE, self.subject_chosen)
 
-        self.year_choice = wx.Choice(self, size=(85, 25))  # Choosing the year
+        self.year_choice = wx.Choice(self, size=(90, -1))  # Choosing the year
         self.year_choice.Bind(wx.EVT_CHOICE, self.year_chosen)
 
-        self.season_choice = wx.Choice(self, size=(85, 25))  # Choosing the season
+        self.season_choice = wx.Choice(self, size=(90, -1))  # Choosing the season
         self.season_choice.Bind(wx.EVT_CHOICE, self.season_chosen)
 
-        self.num_choice = wx.Choice(self, size=(85, 25))  # Choosing the paper number
+        self.num_choice = wx.Choice(self, size=(90, -1))  # Choosing the paper number
         self.num_choice.Bind(wx.EVT_CHOICE, self.num_chosen)
 
-        self.region_choice = wx.Choice(self, size=(85, 25))  # Choosing the region
+        self.region_choice = wx.Choice(self, size=(90, -1))  # Choosing the region
         self.region_choice.Bind(wx.EVT_CHOICE, self.region_chosen)
 
         txt_filter = wx.StaticText(self, label="Filter:")
-        self.style_choice = wx.Choice(self, size=(160, 25))  # Choosing the display style
+        self.style_choice = wx.Choice(self, size=(160, -1))  # Choosing the display style
         self.style_choice.Bind(wx.EVT_CHOICE, self.style_chosen)
         self.hint = wx.StaticText(self, label="Papers and answers before 2005 are omitting.")
 
-        download = wx.Button(self, label="Download", size=(60, 25))  # Download button
+        download = wx.Button(self, label="Download", size=(60, -1))  # Download button
         self.Bind(wx.EVT_BUTTON, self.pre_download, download)
 
-        self.type_choice = wx.Choice(self, size=(40, 25))
+        self.type_choice = wx.Choice(self, size=(40, -1))
         self.type_choice.Bind(wx.EVT_CHOICE, self.type_chosen)
         self.type_choice.Hide()
 
         self.paper_checklist = wx.CheckListBox(self)  # Check list box to display papers avaliable for downloading
 
-        select_all = wx.Button(self, label="Select All", size=(60, 25))  # Select all button
+        select_all = wx.Button(self, label="Select All", size=(60, -1))  # Select all button
         self.Bind(wx.EVT_BUTTON, self.select_all, select_all)
 
         # Arranging boxes
@@ -70,20 +70,18 @@ class MainFrame(wx.Frame):
         sizer_hint = wx.BoxSizer(wx.HORIZONTAL)
         sizer_bottom = wx.BoxSizer(wx.HORIZONTAL)
 
-        bottom_border = 10
+        sizer_top.Add(self.level_choice, proportion=1, flag= wx.RIGHT, border=10)
+        sizer_top.Add(self.subject_choice, proportion=1, flag=wx.ALIGN_RIGHT, border=10)
 
-        sizer_top.Add(self.level_choice, proportion=1, flag=wx.BOTTOM | wx.RIGHT, border=bottom_border | 5)
-        sizer_top.Add(self.subject_choice, proportion=1, flag=wx.ALIGN_RIGHT | wx.BOTTOM, border=bottom_border)
+        sizer_filter.Add(txt_filter, proportion=0, flag=wx.ALIGN_CENTER_VERTICAL, border=10)
+        sizer_filter.Add(self.year_choice, proportion=1, flag=wx.LEFT, border=10)
+        sizer_filter.Add(self.season_choice, proportion=1, flag=wx.LEFT, border=10)
+        sizer_filter.Add(self.num_choice, proportion=1, flag=wx.LEFT, border=10)
+        sizer_filter.Add(self.region_choice, proportion=1, flag=wx.LEFT, border=10)
 
-        sizer_filter.Add(txt_filter, proportion=0, flag=wx.ALIGN_CENTER_VERTICAL | wx.BOTTOM, border=bottom_border)
-        sizer_filter.Add(self.year_choice, proportion=1, flag=wx.LEFT | wx.BOTTOM, border=10 | bottom_border)
-        sizer_filter.Add(self.season_choice, proportion=1, flag=wx.LEFT | wx.BOTTOM, border=10 | bottom_border)
-        sizer_filter.Add(self.num_choice, proportion=1, flag=wx.LEFT | wx.BOTTOM, border=10 | bottom_border)
-        sizer_filter.Add(self.region_choice, proportion=1, flag=wx.LEFT | wx.BOTTOM, border=10 | bottom_border)
+        sizer_paper_checklist.Add(self.paper_checklist, proportion=1, flag=wx.EXPAND)
 
-        sizer_paper_checklist.Add(self.paper_checklist, proportion=1, flag=wx.EXPAND | wx.BOTTOM, border=bottom_border)
-
-        sizer_hint.Add(self.hint, proportion=0, flag=wx.BOTTOM, border=bottom_border)
+        sizer_hint.Add(self.hint, proportion=0)
 
         sizer_bottom.Add(self.style_choice, proportion=1, flag=wx.ALIGN_LEFT)
         sizer_bottom.Add(self.type_choice, proportion=1, flag=wx.LEFT | wx.RESERVE_SPACE_EVEN_IF_HIDDEN, border=5)
@@ -92,12 +90,17 @@ class MainFrame(wx.Frame):
 
         sizer_all = wx.BoxSizer(wx.VERTICAL)
         side_border = 25
+        bottom_border = 12
 
-        sizer_all.Add(sizer_top, proportion=0, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=side_border|side_border|1)
-        sizer_all.Add(sizer_filter, proportion=0, flag=wx.EXPAND|wx.LEFT|wx.RIGHT, border=side_border|side_border)
-        sizer_all.Add(sizer_paper_checklist, proportion=1, flag=wx.EXPAND|wx.LEFT|wx.RIGHT, border=side_border | side_border)
-        sizer_all.Add(sizer_hint, proportion=0, flag=wx.EXPAND|wx.LEFT|wx.RIGHT, border=side_border|side_border)
-        sizer_all.Add(sizer_bottom, proportion=0, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.BOTTOM, border=side_border|side_border|1)
+        sizer_all.Add(sizer_top, proportion=0, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.TOP, border=side_border)
+        sizer_all.AddSpacer(bottom_border)
+        sizer_all.Add(sizer_filter, proportion=0, flag=wx.EXPAND|wx.LEFT|wx.RIGHT, border=side_border)
+        sizer_all.AddSpacer(bottom_border)
+        sizer_all.Add(sizer_paper_checklist, proportion=1, flag=wx.EXPAND|wx.LEFT|wx.RIGHT, border=side_border)
+        sizer_all.AddSpacer(bottom_border)
+        sizer_all.Add(sizer_hint, proportion=0, flag=wx.EXPAND|wx.LEFT|wx.RIGHT, border=side_border)
+        sizer_all.AddSpacer(bottom_border)
+        sizer_all.Add(sizer_bottom, proportion=0, flag=wx.EXPAND|wx.LEFT|wx.RIGHT|wx.BOTTOM, border=side_border)
 
         self.SetSizer(sizer_all)
 
@@ -152,7 +155,7 @@ class MainFrame(wx.Frame):
             return
 
         # Cache
-        cache_folder = Cache.get_cache_directory()
+        cache_folder = Cache.customized_directory()
         cache_subject = os.path.join(cache_folder, "GCE Guide %s" % level)
         if not os.path.exists(cache_subject):
             self.subject_dict = Crawler.visit_level(Crawler.levels_dict[level])  # Return subject list
@@ -186,7 +189,7 @@ class MainFrame(wx.Frame):
             return
 
         # Cache
-        cache_folder = Cache.get_cache_directory()
+        cache_folder = Cache.customized_directory()
         cache_paper = os.path.join(cache_folder, "GCE Guide %s" % subject)
         if not os.path.exists(cache_paper):
             self.paper_dict = Crawler.visit_subject(subject_url)  # Get paper list
@@ -348,13 +351,18 @@ class MainFrame(wx.Frame):
                     self.paper_checklist.Check(i, check=False)
 
     def pre_download(self, event):
-        dlg = wx.DirDialog(self, "Choose the root folder for past paper")
-        if dlg.ShowModal() == wx.ID_OK:
-            folder_directory = dlg.GetPath()
-            dlg.Destroy()
+        preference_path = Cache.preference_directory()
+        config = Cache.load(preference_path)
+        if not config["Default path mode"]:
+            dlg = wx.DirDialog(self, "Choose the root folder for past paper")
+            if dlg.ShowModal() == wx.ID_OK:
+                folder_directory = dlg.GetPath()
+                dlg.Destroy()
+            else:
+                dlg.Destroy()
+                return
         else:
-            dlg.Destroy()
-            return
+            folder_directory = config["Default path"]
 
         self.directory = os.path.join(folder_directory, self.subject_choice.GetStringSelection())
         if not os.path.exists(self.directory):

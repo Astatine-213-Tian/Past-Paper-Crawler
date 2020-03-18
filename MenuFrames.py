@@ -13,7 +13,7 @@ class AboutFrame(wx.Frame):
         title_font = wx.Font(wx.FontInfo(13).Bold().FaceName("Arial"))
         title.SetFont(title_font)
 
-        version = wx.StaticText(self, label="Version 1.2.2")
+        version = wx.StaticText(self, label="Version 1.2.3")
         team = wx.StaticText(self, label="Made by Teresa, John, Ethan, and Peter")
         maintenance = wx.StaticText(self, label="Currently maintained by Teresa")
         thanks = wx.StaticText(self, label="Inspired by Past Paper Crawler created by Raymond")
@@ -44,7 +44,7 @@ class AboutFrame(wx.Frame):
 
 class PreferencesFrame(wx.Frame):
     def __init__(self, call):
-        wx.Frame.__init__(self, None, style=wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX)
+        wx.Frame.__init__(self, None, style=wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX, size=(400, 485))
         self.init_UI()
         self.call = call
 
@@ -63,6 +63,60 @@ class GeneralPanel(wx.Panel):
     def __init__(self, parent):
         wx.Panel.__init__(self, parent)
 
+        self.config_path = Cache.preference_directory()
+        self.current_setting = Cache.load(self.config_path)
+
+        hint_txt = wx.StaticText(self, label="Download path:")
+        self.default_directory = wx.StaticText(self, label="")
+        ask_radio_button = wx.RadioButton(self, label="Ask every time")
+        default_radio_button = wx.RadioButton(self, label="Use default path")
+        if self.current_setting["Default path mode"]:
+            default_radio_button.SetValue(True)
+            self.default_directory.SetLabel(self.current_setting["Default path"])
+        else:
+            ask_radio_button.SetValue(True)
+
+        self.Bind(wx.EVT_RADIOBUTTON, self.on_radio_button)
+
+        change_button = wx.Button(self, label="change", size=(65, -1))
+        self.Bind(wx.EVT_BUTTON, self.on_change_path, change_button)
+
+        set_path_sizer = wx.BoxSizer(wx.HORIZONTAL)
+        set_path_sizer.Add(default_radio_button, flag=wx.ALIGN_CENTER_VERTICAL)
+        set_path_sizer.Add(change_button, flag=wx.LEFT | wx.ALIGN_CENTER_VERTICAL, border=5)
+
+        border = 10
+
+        general_sizer = wx.BoxSizer(wx.VERTICAL)
+        general_sizer.Add(hint_txt, flag=wx.LEFT | wx.TOP, border=border)
+        general_sizer.AddSpacer(5)
+        general_sizer.Add(ask_radio_button, flag=wx.LEFT, border=border)
+        general_sizer.AddSpacer(3)
+        general_sizer.Add(set_path_sizer, flag=wx.LEFT, border=border)
+        general_sizer.AddSpacer(2)
+        general_sizer.Add(self.default_directory, flag=wx.LEFT, border=25)
+        self.SetSizer(general_sizer)
+
+    def on_radio_button(self, event):
+        choice = event.GetEventObject()
+        if choice.GetLabel() == "Use default path":
+            self.current_setting["Default path mode"] = True
+        else:
+            self.current_setting["Default path mode"] = False
+        Cache.store(self.current_setting, self.config_path)
+
+    def on_change_path(self, event):
+        dlg = wx.DirDialog(self, "Choose the default folder for past paper")
+        if dlg.ShowModal() == wx.ID_OK:
+            folder_directory = dlg.GetPath()
+            self.current_setting["Default path"] = folder_directory
+            self.default_directory.SetLabel(folder_directory)
+            Cache.store(self.current_setting, self.config_path)
+            dlg.Destroy()
+        else:
+            dlg.Destroy()
+            return
+
 
 class CachePanel(wx.Panel):
     def __init__(self, parent):
@@ -72,7 +126,7 @@ class CachePanel(wx.Panel):
         open_button = wx.Button(self, label="open folder")
         self.Bind(wx.EVT_BUTTON, self.on_open, open_button)
 
-        self.cache_folder = Cache.get_cache_directory()
+        self.cache_folder = Cache.customized_directory()
         cache_list = sorted([file for file in os.listdir(self.cache_folder) if not file.startswith(".")])
         self.cache_checklist = wx.CheckListBox(self, choices=cache_list, size=(0, 295))
 
@@ -90,11 +144,11 @@ class CachePanel(wx.Panel):
         button_sizer.Add(remove_button, flag=wx.LEFT, border=8)
 
         cache_sizer = wx.BoxSizer(wx.VERTICAL)
-        cache_sizer.Add(explain_txt, flag=wx.BOTTOM | wx.LEFT | wx.RIGHT, border=10 | 10 | 10)
-        cache_sizer.Add(open_cache_sizer, flag=wx.BOTTOM | wx.LEFT | wx.RIGHT, border=10 | 10 | 10)
+        cache_sizer.Add(explain_txt, flag=wx.ALL, border=10)
+        cache_sizer.Add(open_cache_sizer, flag=wx.BOTTOM | wx.LEFT | wx.RIGHT, border=10)
         cache_sizer.Add(self.cache_checklist, flag=wx.ALIGN_CENTER_HORIZONTAL | wx.EXPAND | wx.BOTTOM | wx.LEFT | wx.RIGHT,
-                        border=10 | 10 | 10)
-        cache_sizer.Add(button_sizer, flag=wx.ALIGN_RIGHT | wx.BOTTOM | wx.LEFT | wx.RIGHT, border=10 | 10 | 10)
+                        border=10)
+        cache_sizer.Add(button_sizer, flag=wx.ALIGN_RIGHT | wx.BOTTOM | wx.LEFT | wx.RIGHT, border=10)
         self.SetSizer(cache_sizer)
 
     def on_open(self, event):

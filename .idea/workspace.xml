@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dade86df-d5e0-4825-917d-80450004749c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainGUI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MenuFrames.py" beforeDir="false" afterPath="$PROJECT_DIR$/MenuFrames.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -164,7 +161,7 @@
       <workItem from="1584343972016" duration="8017000" />
       <workItem from="1584501514977" duration="2503000" />
       <workItem from="1584510948285" duration="539000" />
-      <workItem from="1584515349012" duration="1797000" />
+      <workItem from="1584515349012" duration="2049000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1584331377372</created>
@@ -194,7 +191,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584344382635</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Use box sizer to rearrange retry frame&#10;Solve the issue that when closing the retry frame, the progress is not killed">
+      <created>1584517732407</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1584517732408</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,18 +208,19 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Icon" />
     <MESSAGE value="Fixed the issue of opening multiple preferences frame" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed the issue of opening multiple preferences frame" />
+    <MESSAGE value="Use box sizer to rearrange retry frame&#10;Solve the issue that when closing the retry frame, the progress is not killed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Use box sizer to rearrange retry frame&#10;Solve the issue that when closing the retry frame, the progress is not killed" />
   </component>
   <component name="WindowStateProjectService">
     <state x="104" y="42" width="1071" height="697" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584332946597">
       <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state x="104" y="42" width="1071" height="697" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.716@0.23.1280.716" timestamp="1584332946597" />
-    <state x="147" y="23" key="CommitChangelistDialog2" timestamp="1584506057984">
+    <state x="147" y="23" key="CommitChangelistDialog2" timestamp="1584517732119">
       <screen x="0" y="23" width="1280" height="721" />
     </state>
     <state x="147" y="23" key="CommitChangelistDialog2/0.23.1280.716@0.23.1280.716" timestamp="1584332572708" />
-    <state x="147" y="23" key="CommitChangelistDialog2/0.23.1280.721@0.23.1280.721" timestamp="1584506057984" />
+    <state x="147" y="23" key="CommitChangelistDialog2/0.23.1280.721@0.23.1280.721" timestamp="1584517732119" />
     <state x="147" y="23" key="CommitChangelistDialog2/0.23.1280.723@0.23.1280.723" timestamp="1584344382319" />
     <state width="1238" height="115" key="GridCell.Tab.0.bottom" timestamp="1584517655873">
       <screen x="0" y="23" width="1280" height="723" />

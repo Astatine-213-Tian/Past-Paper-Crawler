@@ -3,6 +3,35 @@ A crawler that can help you download CIE past paper from GCE guide.
 
 
 
+# Running
+
+## Source code
+
+### Pre-installation
+
+Environment required: python 3
+
+```
+pip3 install bs4
+pip3 install requests
+pip3 install wxpython
+```
+
+if the installation process is too slow, use alternative download address:
+
+```
+pip3 install module_name -i https://pypi.douban.com/simple/ 
+```
+
+
+
+### After download
+
+1. Put all files inside one folder
+2. Run the script `MainGUI.py`
+
+
+
 # To do
 
 * Sort paper by year

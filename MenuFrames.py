@@ -13,7 +13,7 @@ class AboutFrame(wx.Frame):
         title_font = wx.Font(wx.FontInfo(13).Bold().FaceName("Arial"))
         title.SetFont(title_font)
 
-        version = wx.StaticText(self, label="Version 1.3.0")
+        version = wx.StaticText(self, label="Version 1.3.1")
         team = wx.StaticText(self, label="Made by Teresa, John, Ethan, and Peter")
         maintenance = wx.StaticText(self, label="Currently maintained by Teresa")
         thanks = wx.StaticText(self, label="Inspired by Past Paper Crawler created by Raymond")

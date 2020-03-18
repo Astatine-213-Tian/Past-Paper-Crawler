@@ -27,23 +27,34 @@ pip3 install module_name -i https://pypi.douban.com/simple/
 
 ### After download
 
-1. Put all files inside one folder
-2. Run the script `MainGUI.py`
+1. Run the script `MainGUI.py`
 
 
 
 # To do
 
 * Sort paper by year
-* Automatically check for update
+
+* Automatically check for new version of the software
+
+* Automatically check for update in cache
+
 * Allow multiple selection in filter
-* Automatically update the cache
+
 * Skip downloaded file
+
 * Allow option - create folder for each type of paper
+
+  
 
 # Update log
 
 ## v 1.3
+
+### 1.3.1
+
+* [Bug Fixed] Add error message when default download path doesn't exist
+* [Enhancement] Adjust the arrangement on windows
 
 ### 1.3.0
 

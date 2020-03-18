@@ -10,15 +10,20 @@ class AboutFrame(wx.Frame):
         wx.Frame.__init__(self, None, -1, size=(300, 160), style=wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX)
 
         title = wx.StaticText(self, label="Past Paper Crawler")
-        title_font = wx.Font(wx.FontInfo(13).Bold().FaceName("Arial"))
-        title.SetFont(title_font)
-
         version = wx.StaticText(self, label="Version 1.3.1")
         team = wx.StaticText(self, label="Made by Teresa, John, Ethan, and Peter")
         maintenance = wx.StaticText(self, label="Currently maintained by Teresa")
         thanks = wx.StaticText(self, label="Inspired by Past Paper Crawler created by Raymond")
 
-        content_font = wx.Font(wx.FontInfo(10))
+        if platform.system() == "Darwin":
+            title_font = wx.Font(wx.FontInfo(13).Bold())
+            content_font = wx.Font(wx.FontInfo(10))
+        else:
+            title_font = wx.Font(wx.FontInfo(13).Bold().FaceName("Arial"))
+            content_font = wx.Font(wx.FontInfo(10).FaceName("Arial"))
+
+        title.SetFont(title_font)
+
         version.SetFont(content_font)
         team.SetFont(content_font)
         maintenance.SetFont(content_font)
@@ -98,8 +103,8 @@ class GeneralPanel(wx.Panel):
         general_sizer.Add(set_path_sizer, flag=wx.LEFT, border=border)
         general_sizer.AddSpacer(2)
         general_sizer.Add(self.default_directory, flag=wx.LEFT, border=25)
-        general_sizer.AddSpacer(4)
-        general_sizer.Add(split, flag=wx.GROW)
+        general_sizer.AddSpacer(6)
+        general_sizer.Add(split, flag=wx.EXPAND|wx.RIGHT|wx.LEFT, border=border)
         self.SetSizer(general_sizer)
 
     def on_radio_button(self, event):
@@ -179,8 +184,9 @@ class CachePanel(wx.Panel):
         self.cache_checklist.Set(cache_list)
 
 
-if __name__ == '__main__':
-    app = wx.App()
-    frame = PreferencesFrame(None)
-    frame.Show()
-    app.MainLoop()
+# if __name__ == '__main__':
+#     app = wx.App()
+#     frame = PreferencesFrame(None)
+#     # frame = AboutFrame(None)
+#     frame.Show()
+#     app.MainLoop()

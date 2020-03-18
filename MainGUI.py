@@ -19,7 +19,6 @@ class MainFrame(wx.Frame):
         self.paper_dict = {}  # A dictionary of papers available return from Crawler. (key: f_in name, [value]: paper ur)
         self.paired = True
 
-        self.retry_urls = []  # List of url need to retry download
         self.directory = ""  # Record the root folder the user choose to save the f_in
         self.year, self.season, self.num, self.region, self.type = "All years", "All seasons", "All papers", "All regions", "All types"  # Record the subject, season, num, region, chosen by the user
 
@@ -353,7 +352,13 @@ class MainFrame(wx.Frame):
     def pre_download(self, event):
         preference_path = Cache.preference_directory()
         config = Cache.load(preference_path)
-        if not config["Default path mode"]:
+        if config["Default path mode"]:
+            folder_directory = config["Default path"]
+            if not os.path.exists(folder_directory):
+                wx.MessageBox("Default download path does not exist. \nPlease go to preference and reset the path.",
+                              "Folder not found")
+                return
+        else:
             dlg = wx.DirDialog(self, "Choose the root folder for past paper")
             if dlg.ShowModal() == wx.ID_OK:
                 folder_directory = dlg.GetPath()
@@ -361,8 +366,6 @@ class MainFrame(wx.Frame):
             else:
                 dlg.Destroy()
                 return
-        else:
-            folder_directory = config["Default path"]
 
         self.directory = os.path.join(folder_directory, self.subject_choice.GetStringSelection())
         if not os.path.exists(self.directory):
@@ -402,6 +405,8 @@ class MainFrame(wx.Frame):
             progress_bar.Update(status['F'], "Finish downloading %d/%d files" % (status['F'], total_files))
             time.sleep(1)
 
+        progress_bar.Destroy()
+
         error_files = DownloadModule.failed_names
         # selected_paper = self.paper_checklist.GetCheckedItems()
         if error_files:
@@ -419,8 +424,9 @@ class MainFrame(wx.Frame):
 
     def call_back(self, value):  # Link with RetryFrame
         if value:
-            self.retry_urls = [self.paper_dict[each] for each in value]
-            self.download(self.retry_urls)
+            retry_urls = [self.paper_dict[each] for each in value]
+            print(retry_urls)
+            self.download(retry_urls)
 
 
 class RetryFrame(wx.Dialog):  # New frame to display f_in that need to retry

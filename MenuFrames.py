@@ -68,14 +68,14 @@ class GeneralPanel(wx.Panel):
         self.current_setting = Cache.load(self.config_path)
 
         hint_txt = wx.StaticText(self, label="Download path:")
-        self.default_directory = wx.StaticText(self, label="")
         ask_radio_button = wx.RadioButton(self, label="Ask every time")
         default_radio_button = wx.RadioButton(self, label="Use default path")
         if self.current_setting["Default path mode"]:
             default_radio_button.SetValue(True)
-            self.default_directory.SetLabel(self.current_setting["Default path"])
         else:
             ask_radio_button.SetValue(True)
+
+        self.default_directory = wx.StaticText(self, label=self.current_setting["Default path"])
 
         self.Bind(wx.EVT_RADIOBUTTON, self.on_radio_button)
 

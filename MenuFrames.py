@@ -7,13 +7,14 @@ import Cache
 
 class AboutFrame(wx.Frame):
     def __init__(self, call):
-        wx.Frame.__init__(self, None, -1, size=(300, 160), style=wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX)
+        wx.Frame.__init__(self, None, -1, size=(300, 180), style=wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX)
 
-        title = wx.StaticText(self, label="Past Paper Crawler")
-        version = wx.StaticText(self, label="Version 1.3.1")
-        team = wx.StaticText(self, label="Made by Teresa, John, Ethan, and Peter")
-        maintenance = wx.StaticText(self, label="Currently maintained by Teresa")
-        thanks = wx.StaticText(self, label="Inspired by Past Paper Crawler created by Raymond")
+        title = wx.StaticText(self, label=" Past Paper Crawler ")
+        version = wx.StaticText(self, label=" Version 1.3.1 ")
+        team = wx.StaticText(self, label=" Made by Teresa, John, Ethan, and Peter ")
+        maintenance = wx.StaticText(self, label=" Currently maintained by Teresa ")
+        copy_right = wx.StaticText(self, label=" Copyright © 2020 田青禾 ")
+        thanks = wx.StaticText(self, label=" Inspired by Past Paper Crawler created by Raymond ")
 
         if platform.system() == "Darwin":
             title_font = wx.Font(wx.FontInfo(13).Bold())
@@ -27,14 +28,16 @@ class AboutFrame(wx.Frame):
         version.SetFont(content_font)
         team.SetFont(content_font)
         maintenance.SetFont(content_font)
+        copy_right.SetFont(content_font)
         thanks.SetFont(content_font)
 
         bottom_border = 10
         sizer = wx.BoxSizer(wx.VERTICAL)
-        sizer.Add(title, flag=wx.ALIGN_CENTER | wx.BOTTOM | wx.TOP, border=bottom_border | bottom_border)
+        sizer.Add(title, flag=wx.ALIGN_CENTER | wx.BOTTOM | wx.TOP, border=bottom_border)
         sizer.Add(version, flag=wx.ALIGN_CENTER | wx.BOTTOM, border=bottom_border)
         sizer.Add(team, flag=wx.ALIGN_CENTER | wx.BOTTOM, border=bottom_border)
         sizer.Add(maintenance, flag=wx.ALIGN_CENTER | wx.BOTTOM, border=bottom_border)
+        sizer.Add(copy_right, flag=wx.ALIGN_CENTER | wx.BOTTOM, border=bottom_border)
         sizer.Add(thanks, flag=wx.ALIGN_CENTER | wx.BOTTOM, border=bottom_border)
 
         self.SetSizer(sizer)
@@ -184,9 +187,9 @@ class CachePanel(wx.Panel):
         self.cache_checklist.Set(cache_list)
 
 
-# if __name__ == '__main__':
-#     app = wx.App()
-#     frame = PreferencesFrame(None)
-#     # frame = AboutFrame(None)
-#     frame.Show()
-#     app.MainLoop()
+if __name__ == '__main__':
+    app = wx.App()
+    # frame = PreferencesFrame(None)
+    frame = AboutFrame(None)
+    frame.Show()
+    app.MainLoop()

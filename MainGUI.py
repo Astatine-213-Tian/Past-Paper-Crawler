@@ -321,11 +321,11 @@ class MainFrame(wx.Frame):
     def style_chosen(self, event):  # when display style was chosen
         self.paired = True if self.style_choice.GetSelection() == 0 else False
         if self.paired:
-            self.hint.SetLabel("Papers and answers before 2005 are omitted.")
+            self.hint.SetLabel("Papers and answers before 2005 are omitted. ")
             self.type_choice.Hide()
             self.filter_pairs()
         else:
-            self.hint.SetLabel("All files are shown.")
+            self.hint.SetLabel("All files are shown. ")
             self.filter_files()
             self.type_choice.Show()
 

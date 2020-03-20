@@ -385,7 +385,7 @@ class MainFrame(wx.Frame):
         DownloadModule.download_thread(urls, self.directory)
 
         # Show progress
-        progress_bar = wx.ProgressDialog("Progress", "Start downloading files", maximum=total_files,
+        progress_bar = wx.ProgressDialog("Progress", "Start downloading files", maximum=total_files, parent=self,
                                          style=wx.PD_CAN_ABORT)
         time.sleep(1)
         while DownloadModule.running:

@@ -51,10 +51,11 @@ pip3 install module_name -i https://pypi.douban.com/simple/
 
 ## v 1.3
 
-### 1.3.1
+### 1.3.1 [Released]
 
 * [Bug Fixed] Add error message when default download path doesn't exist
 * [Enhancement] Adjust the arrangement on windows
+* [Enhancement] Increased the opening speed for Mac executable file
 
 ### 1.3.0
 

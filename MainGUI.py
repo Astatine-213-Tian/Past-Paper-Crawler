@@ -7,7 +7,7 @@ from PaperInfo import Paper, Pair
 
 class MainFrame(wx.Frame):
     def __init__(self):
-        wx.Frame.__init__(self, None, -1, "Past paper Crawler", size=(520, 580))
+        wx.Frame.__init__(self, None, -1, "Past Paper Crawler", size=(520, 580))
 
         self.level_list = ["--- Select level ---", "IGCSE", "AS & A-Level", "O-Level"]
         self.type_dict = {"All types": "All types", "Question Paper": "qp", "Mark Scheme": "ms", "Examiner Report": "er", "Grade Threshold": "gt", "Specimen Paper": "sp", "other": "other"}
@@ -321,11 +321,11 @@ class MainFrame(wx.Frame):
     def style_chosen(self, event):  # when display style was chosen
         self.paired = True if self.style_choice.GetSelection() == 0 else False
         if self.paired:
-            self.hint.SetLabel("Papers and answers before 2005 are omitted.")
+            self.hint.SetLabel("Papers and answers before 2005 are omitted. ")
             self.type_choice.Hide()
             self.filter_pairs()
         else:
-            self.hint.SetLabel("All files are shown.")
+            self.hint.SetLabel("All files are shown. ")
             self.filter_files()
             self.type_choice.Show()
 

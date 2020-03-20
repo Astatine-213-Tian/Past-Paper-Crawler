@@ -135,7 +135,7 @@ class CachePanel(wx.Panel):
     def __init__(self, parent):
         wx.Panel.__init__(self, parent)
         explain_txt = wx.StaticText(self, label="Past Paper Crawler caches viewed web pages to memory \nand disk to boost efficiency.")
-        hint_txt = wx.StaticText(self, label="Current cache on the disk:")
+        hint_txt = wx.StaticText(self, label="Current cache on the disk: ")
         open_button = wx.Button(self, label="open folder")
         self.Bind(wx.EVT_BUTTON, self.on_open, open_button)
 

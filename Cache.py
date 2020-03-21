@@ -45,7 +45,11 @@ def preference_directory():
 
     if not os.path.exists(preference_path):
         # Default setting
-        setting = {"Default path mode": False, "Default path": "", "Paper folder mode": True, "Skip exist file": True}
+        setting = {"Default path mode": False,
+                   "Default path": "",
+                   "Paper folder mode": True,
+                   "Default level": 0}
+
         store(setting, preference_path)
 
     return preference_path

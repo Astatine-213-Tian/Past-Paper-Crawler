@@ -7,7 +7,9 @@ from PaperInfo import Paper, Pair
 
 class MainFrame(wx.Frame):
     def __init__(self):
-        wx.Frame.__init__(self, None, -1, "Past paper Crawler", size=(520, 580))
+        wx.Frame.__init__(self, None, -1, "Past paper Crawler", size=(520, 565))
+
+        self.preference_path = Cache.preference_directory()
 
         level_list = ["--- Select level ---", "IGCSE", "AS & A-Level", "O-Level"]
         self.type_dict = {"All types": "All types", "Question Paper": "qp", "Mark Scheme": "ms", "Examiner Report": "er", "Grade Threshold": "gt", "Specimen Paper": "sp", "other": "other"}
@@ -22,10 +24,9 @@ class MainFrame(wx.Frame):
         self.files_info = {}  # Store the information of each individual f_in
 
         self.level_choice = wx.Choice(self, choices=level_list)  # Choosing the level
-        self.level_choice.SetSelection(0)
         self.level_choice.Bind(wx.EVT_CHOICE, self.level_chosen)
 
-        self.subject_choice = wx.Choice(self)  # Choosing the subject
+        self.subject_choice = wx.Choice(self, choices=[])  # Choosing the subject
         self.subject_choice.Bind(wx.EVT_CHOICE, self.subject_chosen)
 
         self.year_choice = wx.Choice(self, size=(90, -1))  # Choosing the year
@@ -57,16 +58,17 @@ class MainFrame(wx.Frame):
         select_all = wx.Button(self, label="Select All", size=(60, -1))  # Select all button
         self.Bind(wx.EVT_BUTTON, self.select_all, select_all)
 
-        # Arranging boxes
+        self.ini_level()
 
+        # Arranging boxes
         sizer_top = wx.BoxSizer(wx.HORIZONTAL)
         sizer_filter = wx.BoxSizer(wx.HORIZONTAL)
         sizer_paper_checklist = wx.BoxSizer(wx.HORIZONTAL)
         sizer_hint = wx.BoxSizer(wx.HORIZONTAL)
         sizer_bottom = wx.BoxSizer(wx.HORIZONTAL)
 
-        sizer_top.Add(self.level_choice, proportion=1, flag= wx.RIGHT, border=10)
-        sizer_top.Add(self.subject_choice, proportion=1, flag=wx.ALIGN_RIGHT, border=10)
+        sizer_top.Add(self.level_choice, proportion=1, flag= wx.RIGHT, border=15)
+        sizer_top.Add(self.subject_choice, proportion=1, flag=wx.ALIGN_RIGHT)
 
         sizer_filter.Add(txt_filter, proportion=0, flag=wx.ALIGN_CENTER_VERTICAL, border=10)
         sizer_filter.Add(self.year_choice, proportion=1, flag=wx.LEFT, border=10)
@@ -119,6 +121,11 @@ class MainFrame(wx.Frame):
 
         self.SetMenuBar(menu_bar)
 
+    def ini_level(self):
+        config = Cache.load(self.preference_path)
+        self.level_choice.SetSelection(config["Default level"])
+        self.level_chosen(None)
+
     def on_about(self, event):
         about_frame = AboutFrame(self.rebind_about)
         about_frame.Show()
@@ -134,6 +141,7 @@ class MainFrame(wx.Frame):
 
     def rebind_preferences(self):
         self.Bind(wx.EVT_MENU, self.on_preferences, self.preferences)
+        self.ini_level()
 
     def level_chosen(self, event):
         self.subject_choice.Clear()
@@ -346,8 +354,7 @@ class MainFrame(wx.Frame):
                     self.paper_checklist.Check(i, check=False)
 
     def pre_download(self, event):
-        preference_path = Cache.preference_directory()
-        config = Cache.load(preference_path)
+        config = Cache.load(self.preference_path)
         if config["Default path mode"]:
             folder_directory = config["Default path"]
             if not os.path.exists(folder_directory):

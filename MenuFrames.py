@@ -71,35 +71,48 @@ class PreferencesFrame(wx.Frame):
 class GeneralPanel(wx.Panel):
     def __init__(self, parent):
         wx.Panel.__init__(self, parent)
-
         self.config_path = Cache.preference_directory()
         self.current_setting = Cache.load(self.config_path)
 
-        hint_txt = wx.StaticText(self, label="Download path:")
+        level_txt = wx.StaticText(self, label="Default level:")
+        self.level_choice = wx.Choice(self, choices=["--- Select level ---", "IGCSE", "AS & A-Level", "O-Level"])
+        self.level_choice.SetSelection(self.current_setting["Default level"])
+        self.Bind(wx.EVT_CHOICE, self.on_choose_level, self.level_choice)
+
+        level_sizer = wx.BoxSizer(wx.HORIZONTAL)
+        level_sizer.Add(level_txt, flag=wx.RIGHT, border=5)
+        level_sizer.Add(self.level_choice)
+
+        split_after_level = wx.StaticLine(self, style=wx.LI_HORIZONTAL)
+
+        download_txt = wx.StaticText(self, label="Download path:")
         ask_radio_button = wx.RadioButton(self, label="Ask every time")
-        default_radio_button = wx.RadioButton(self, label="Use default path")
+        path_radio_button = wx.RadioButton(self, label="Use default path")
         if self.current_setting["Default path mode"]:
-            default_radio_button.SetValue(True)
+            path_radio_button.SetValue(True)
         else:
             ask_radio_button.SetValue(True)
-
-        self.default_directory = wx.StaticText(self, label=self.current_setting["Default path"])
-
         self.Bind(wx.EVT_RADIOBUTTON, self.on_radio_button)
 
         change_button = wx.Button(self, label="change", size=(65, -1))
         self.Bind(wx.EVT_BUTTON, self.on_change_path, change_button)
 
         set_path_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        set_path_sizer.Add(default_radio_button, flag=wx.ALIGN_CENTER_VERTICAL)
+        set_path_sizer.Add(path_radio_button, flag=wx.ALIGN_CENTER_VERTICAL)
         set_path_sizer.Add(change_button, flag=wx.LEFT | wx.ALIGN_CENTER_VERTICAL, border=5)
 
-        split = wx.StaticLine(self, style=wx.LI_HORIZONTAL)
+        self.default_directory = wx.StaticText(self, label=self.current_setting["Default path"])
+
+        split_after_download = wx.StaticLine(self, style=wx.LI_HORIZONTAL)
 
         border = 10
 
         general_sizer = wx.BoxSizer(wx.VERTICAL)
-        general_sizer.Add(hint_txt, flag=wx.LEFT | wx.TOP, border=border)
+        general_sizer.Add(level_sizer, flag=wx.LEFT | wx.TOP, border=border)
+        general_sizer.AddSpacer(6)
+        general_sizer.Add(split_after_level, flag=wx.EXPAND | wx.RIGHT | wx.LEFT, border=border)
+        general_sizer.AddSpacer(2)
+        general_sizer.Add(download_txt, flag=wx.LEFT, border=border)
         general_sizer.AddSpacer(5)
         general_sizer.Add(ask_radio_button, flag=wx.LEFT, border=border)
         general_sizer.AddSpacer(3)
@@ -107,9 +120,14 @@ class GeneralPanel(wx.Panel):
         general_sizer.AddSpacer(2)
         general_sizer.Add(self.default_directory, flag=wx.LEFT, border=25)
         general_sizer.AddSpacer(6)
-        general_sizer.Add(split, flag=wx.EXPAND|wx.RIGHT|wx.LEFT, border=border)
+        general_sizer.Add(split_after_download, flag=wx.EXPAND | wx.RIGHT | wx.LEFT, border=border)
         self.SetSizer(general_sizer)
 
+    def on_choose_level(self, event):
+        self.current_setting["Default level"] = self.level_choice.GetSelection()
+        print(self.level_choice.GetSelection())
+        Cache.store(self.current_setting, self.config_path)
+    
     def on_radio_button(self, event):
         choice = event.GetEventObject()
         if choice.GetLabel() == "Use default path":
@@ -189,7 +207,7 @@ class CachePanel(wx.Panel):
 
 if __name__ == '__main__':
     app = wx.App()
-    # frame = PreferencesFrame(None)
-    frame = AboutFrame(None)
+    frame = PreferencesFrame(None)
+    # frame = AboutFrame(None)
     frame.Show()
     app.MainLoop()

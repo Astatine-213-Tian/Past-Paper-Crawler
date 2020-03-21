@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dade86df-d5e0-4825-917d-80450004749c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cache.py" beforeDir="false" afterPath="$PROJECT_DIR$/Cache.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainGUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MenuFrames.py" beforeDir="false" afterPath="$PROJECT_DIR$/MenuFrames.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +175,9 @@
       <workItem from="1584703622333" duration="313000" />
       <workItem from="1584710775736" duration="129000" />
       <workItem from="1584711162030" duration="788000" />
-      <workItem from="1584761244418" duration="1574000" />
+      <workItem from="1584761244418" duration="1710000" />
+      <workItem from="1584765625183" duration="467000" />
+      <workItem from="1584776130348" duration="3647000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1584331377372</created>
@@ -240,7 +242,21 @@
       <option name="project" value="LOCAL" />
       <updated>1584711476132</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Fix the issue that authority limited by macOS causes the PPC unable to work">
+      <created>1584762963054</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1584762963054</updated>
+    </task>
+    <task id="LOCAL-00011" summary="优化">
+      <created>1584778547107</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1584778547107</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,50 +270,52 @@
     <MESSAGE value="Add installation hint" />
     <MESSAGE value="No idea what changed" />
     <MESSAGE value="Fix the issue that py2app will ignore the last characters in static text" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix the issue that py2app will ignore the last characters in static text" />
+    <MESSAGE value="Fix the issue that authority limited by macOS causes the PPC unable to work" />
+    <MESSAGE value="优化" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化" />
   </component>
   <component name="WindowStateProjectService">
     <state x="104" y="42" width="1071" height="697" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584332946597">
       <screen x="0" y="23" width="1280" height="716" />
     </state>
     <state x="104" y="42" width="1071" height="697" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.716@0.23.1280.716" timestamp="1584332946597" />
-    <state x="147" y="23" key="CommitChangelistDialog2" timestamp="1584711475717">
-      <screen x="0" y="23" width="1280" height="716" />
+    <state x="147" y="23" key="CommitChangelistDialog2" timestamp="1584778546490">
+      <screen x="0" y="23" width="1280" height="721" />
     </state>
     <state x="147" y="23" key="CommitChangelistDialog2/0.23.1280.716@0.23.1280.716" timestamp="1584711475717" />
-    <state x="147" y="23" key="CommitChangelistDialog2/0.23.1280.721@0.23.1280.721" timestamp="1584696892883" />
+    <state x="147" y="23" key="CommitChangelistDialog2/0.23.1280.721@0.23.1280.721" timestamp="1584778546490" />
     <state x="147" y="23" key="CommitChangelistDialog2/0.23.1280.723@0.23.1280.723" timestamp="1584344382319" />
-    <state width="1238" height="68" key="GridCell.Tab.0.bottom" timestamp="1584703938637">
+    <state width="1238" height="103" key="GridCell.Tab.0.bottom" timestamp="1584780473687">
       <screen x="0" y="23" width="1280" height="721" />
     </state>
     <state width="619" height="130" key="GridCell.Tab.0.bottom/0.23.1280.715@0.23.1280.715" timestamp="1584518689755" />
     <state width="1238" height="64" key="GridCell.Tab.0.bottom/0.23.1280.716@0.23.1280.716" timestamp="1584363927797" />
-    <state width="1238" height="68" key="GridCell.Tab.0.bottom/0.23.1280.721@0.23.1280.721" timestamp="1584703938637" />
-    <state width="1238" height="115" key="GridCell.Tab.0.bottom/0.23.1280.723@0.23.1280.723" timestamp="1584517655873" />
+    <state width="1238" height="103" key="GridCell.Tab.0.bottom/0.23.1280.721@0.23.1280.721" timestamp="1584780473687" />
+    <state width="1238" height="68" key="GridCell.Tab.0.bottom/0.23.1280.723@0.23.1280.723" timestamp="1584766448739" />
     <state width="1238" height="95" key="GridCell.Tab.0.bottom/0.23.1280.724@0.23.1280.724" timestamp="1584505136578" />
-    <state width="1238" height="68" key="GridCell.Tab.0.center" timestamp="1584703938636">
+    <state width="1238" height="103" key="GridCell.Tab.0.center" timestamp="1584780473686">
       <screen x="0" y="23" width="1280" height="721" />
     </state>
     <state width="619" height="130" key="GridCell.Tab.0.center/0.23.1280.715@0.23.1280.715" timestamp="1584518689754" />
     <state width="1238" height="64" key="GridCell.Tab.0.center/0.23.1280.716@0.23.1280.716" timestamp="1584363927796" />
-    <state width="1238" height="68" key="GridCell.Tab.0.center/0.23.1280.721@0.23.1280.721" timestamp="1584703938636" />
-    <state width="1238" height="115" key="GridCell.Tab.0.center/0.23.1280.723@0.23.1280.723" timestamp="1584517655872" />
+    <state width="1238" height="103" key="GridCell.Tab.0.center/0.23.1280.721@0.23.1280.721" timestamp="1584780473686" />
+    <state width="1238" height="68" key="GridCell.Tab.0.center/0.23.1280.723@0.23.1280.723" timestamp="1584766448737" />
     <state width="1238" height="95" key="GridCell.Tab.0.center/0.23.1280.724@0.23.1280.724" timestamp="1584505136574" />
-    <state width="1238" height="68" key="GridCell.Tab.0.left" timestamp="1584703938636">
+    <state width="1238" height="103" key="GridCell.Tab.0.left" timestamp="1584780473685">
       <screen x="0" y="23" width="1280" height="721" />
     </state>
     <state width="619" height="130" key="GridCell.Tab.0.left/0.23.1280.715@0.23.1280.715" timestamp="1584518689753" />
     <state width="1238" height="64" key="GridCell.Tab.0.left/0.23.1280.716@0.23.1280.716" timestamp="1584363927795" />
-    <state width="1238" height="68" key="GridCell.Tab.0.left/0.23.1280.721@0.23.1280.721" timestamp="1584703938636" />
-    <state width="1238" height="115" key="GridCell.Tab.0.left/0.23.1280.723@0.23.1280.723" timestamp="1584517655872" />
+    <state width="1238" height="103" key="GridCell.Tab.0.left/0.23.1280.721@0.23.1280.721" timestamp="1584780473685" />
+    <state width="1238" height="68" key="GridCell.Tab.0.left/0.23.1280.723@0.23.1280.723" timestamp="1584766448736" />
     <state width="1238" height="95" key="GridCell.Tab.0.left/0.23.1280.724@0.23.1280.724" timestamp="1584505136567" />
-    <state width="1238" height="68" key="GridCell.Tab.0.right" timestamp="1584703938637">
+    <state width="1238" height="103" key="GridCell.Tab.0.right" timestamp="1584780473686">
       <screen x="0" y="23" width="1280" height="721" />
     </state>
     <state width="619" height="130" key="GridCell.Tab.0.right/0.23.1280.715@0.23.1280.715" timestamp="1584518689754" />
     <state width="1238" height="64" key="GridCell.Tab.0.right/0.23.1280.716@0.23.1280.716" timestamp="1584363927797" />
-    <state width="1238" height="68" key="GridCell.Tab.0.right/0.23.1280.721@0.23.1280.721" timestamp="1584703938637" />
-    <state width="1238" height="115" key="GridCell.Tab.0.right/0.23.1280.723@0.23.1280.723" timestamp="1584517655873" />
+    <state width="1238" height="103" key="GridCell.Tab.0.right/0.23.1280.721@0.23.1280.721" timestamp="1584780473686" />
+    <state width="1238" height="68" key="GridCell.Tab.0.right/0.23.1280.723@0.23.1280.723" timestamp="1584766448737" />
     <state width="1238" height="95" key="GridCell.Tab.0.right/0.23.1280.724@0.23.1280.724" timestamp="1584505136577" />
     <state x="128" y="81" key="MergeDialog" timestamp="1584711371291">
       <screen x="0" y="23" width="1280" height="716" />
@@ -309,22 +327,23 @@
     </state>
     <state x="351" y="103" key="MultipleFileMergeDialog/0.23.1280.716@0.23.1280.716" timestamp="1584711372977" />
     <state x="351" y="104" key="MultipleFileMergeDialog/0.23.1280.721@0.23.1280.721" timestamp="1584696847808" />
-    <state x="141" y="23" width="997" height="715" key="SettingsEditor" timestamp="1584519690907">
-      <screen x="0" y="23" width="1280" height="716" />
+    <state x="141" y="23" width="997" height="721" key="SettingsEditor" timestamp="1584780090466">
+      <screen x="0" y="23" width="1280" height="721" />
     </state>
     <state x="141" y="23" width="997" height="715" key="SettingsEditor/0.23.1280.715@0.23.1280.715" timestamp="1584518851326" />
     <state x="141" y="23" width="997" height="716" key="SettingsEditor/0.23.1280.716@0.23.1280.716" timestamp="1584519690907" />
-    <state x="240" y="122" key="Vcs.Push.Dialog.v2" timestamp="1584711478959">
-      <screen x="0" y="23" width="1280" height="716" />
+    <state x="141" y="23" width="997" height="721" key="SettingsEditor/0.23.1280.721@0.23.1280.721" timestamp="1584780090466" />
+    <state x="240" y="123" key="Vcs.Push.Dialog.v2" timestamp="1584780551055">
+      <screen x="0" y="23" width="1280" height="721" />
     </state>
     <state x="240" y="122" key="Vcs.Push.Dialog.v2/0.23.1280.715@0.23.1280.715" timestamp="1584518854261" />
     <state x="240" y="122" key="Vcs.Push.Dialog.v2/0.23.1280.716@0.23.1280.716" timestamp="1584711478959" />
-    <state x="240" y="123" key="Vcs.Push.Dialog.v2/0.23.1280.721@0.23.1280.721" timestamp="1584696952228" />
-    <state x="294" y="215" key="com.intellij.ide.util.TipDialog" timestamp="1584761244944">
-      <screen x="0" y="23" width="1280" height="716" />
+    <state x="240" y="123" key="Vcs.Push.Dialog.v2/0.23.1280.721@0.23.1280.721" timestamp="1584780551055" />
+    <state x="294" y="216" key="com.intellij.ide.util.TipDialog" timestamp="1584776151222">
+      <screen x="0" y="23" width="1280" height="721" />
     </state>
     <state x="294" y="215" key="com.intellij.ide.util.TipDialog/0.23.1280.716@0.23.1280.716" timestamp="1584761244944" />
-    <state x="294" y="216" key="com.intellij.ide.util.TipDialog/0.23.1280.721@0.23.1280.721" timestamp="1584703624188" />
+    <state x="294" y="216" key="com.intellij.ide.util.TipDialog/0.23.1280.721@0.23.1280.721" timestamp="1584776151222" />
     <state x="294" y="217" key="com.intellij.ide.util.TipDialog/0.23.1280.723@0.23.1280.723" timestamp="1584343218040" />
     <state x="325" y="102" key="git4idea.branch.GitSmartOperationDialog" timestamp="1584711351787">
       <screen x="0" y="23" width="1280" height="716" />
@@ -340,9 +359,9 @@
     <state x="370" y="302" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.23.1280.721@0.23.1280.721" timestamp="1584529929403" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Past_Paper_Crawler$MenuFrames.coverage" NAME="MenuFrames Coverage Results" MODIFIED="1584537773971" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Past_Paper_Crawler$MainGUI.coverage" NAME="MainGUI Coverage Results" MODIFIED="1584762757464" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Past_Paper_Crawler$Test.coverage" NAME="Test Coverage Results" MODIFIED="1584507622537" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Past_Paper_Crawler$MenuFrames.coverage" NAME="MenuFrames Coverage Results" MODIFIED="1584779011523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Past_Paper_Crawler$MainGUI.coverage" NAME="MainGUI Coverage Results" MODIFIED="1584780473677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Past_Paper_Crawler$Test.coverage" NAME="Test Coverage Results" MODIFIED="1584766448708" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Past_Paper_Crawler$GUI.coverage" NAME="MainGUI Coverage Results" MODIFIED="1584359202737" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Past_Paper_Crawler$Past_Paper_Crawler.coverage" NAME="GUI Coverage Results" MODIFIED="1584331295957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

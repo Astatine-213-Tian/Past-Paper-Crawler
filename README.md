@@ -51,6 +51,10 @@ pip3 install module_name -i https://pypi.douban.com/simple/
 
 ## v 1.3
 
+### 1.3.2
+
+* [New Function] Add default setting of initially loaded level
+
 ### 1.3.1 [Released]
 
 * [Bug Fixed] Add error message when default download path doesn't exist

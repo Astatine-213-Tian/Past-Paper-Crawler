@@ -43,7 +43,7 @@ class MainFrame(wx.Frame):
         txt_filter = wx.StaticText(self, label="Filter:")
         self.style_choice = wx.Choice(self, size=(160, -1))  # Choosing the display style
         self.style_choice.Bind(wx.EVT_CHOICE, self.style_chosen)
-        self.hint = wx.StaticText(self, label="Papers and answers before 2005 are omitting.")
+        self.hint = wx.StaticText(self)
 
         download = wx.Button(self, label="Download", size=(60, -1))  # Download button
         self.Bind(wx.EVT_BUTTON, self.pre_download, download)

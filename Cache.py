@@ -2,6 +2,7 @@ import pickle
 import platform
 import os
 import getpass
+import wx
 
 
 def store(content, directory):
@@ -20,7 +21,7 @@ def load(directory):
 def cache_folder():
     path = os.getcwd()
     if platform.system() == "Darwin":
-        cache_path = "/Users/" + path.split("/")[2] + "/Library/Caches/Teresa.PastPaperCrawler"
+        cache_path = path + "/Cache"
     else:
         cache_path = "C:\\Users\\" + getpass.getuser() + "\\AppData\\Local\\Temp\\Teresa.PastPaperCrawler"
 

@@ -9,7 +9,7 @@ class MainFrame(wx.Frame):
     def __init__(self):
         wx.Frame.__init__(self, None, -1, "Past paper Crawler", size=(520, 580))
 
-        self.level_list = ["--- Select level ---", "IGCSE", "AS & A-Level", "O-Level"]
+        level_list = ["--- Select level ---", "IGCSE", "AS & A-Level", "O-Level"]
         self.type_dict = {"All types": "All types", "Question Paper": "qp", "Mark Scheme": "ms", "Examiner Report": "er", "Grade Threshold": "gt", "Specimen Paper": "sp", "other": "other"}
         self.subject_dict = {}  # A dictionary of subjects available return from Crawler. (key: subject name, value: subject url)
         self.paper_dict = {}  # A dictionary of papers available return from Crawler. (key: f_in name, [value]: paper ur)
@@ -21,7 +21,7 @@ class MainFrame(wx.Frame):
         self.pairs_info = {}  # Store the information of question paper and corresponding mark scheme
         self.files_info = {}  # Store the information of each individual f_in
 
-        self.level_choice = wx.Choice(self, choices=self.level_list)  # Choosing the level
+        self.level_choice = wx.Choice(self, choices=level_list)  # Choosing the level
         self.level_choice.SetSelection(0)
         self.level_choice.Bind(wx.EVT_CHOICE, self.level_chosen)
 
@@ -136,7 +136,6 @@ class MainFrame(wx.Frame):
         self.Bind(wx.EVT_MENU, self.on_preferences, self.preferences)
 
     def level_chosen(self, event):
-        level = self.level_choice.GetStringSelection()  # Get level chosen
         self.subject_choice.Clear()
         self.paper_checklist.Clear()
         self.year_choice.Clear()
@@ -146,8 +145,10 @@ class MainFrame(wx.Frame):
         self.pairs_info = {}
         self.files_info = {}
 
-        if level == self.level_list[0]:  # Not choosing a level
+        if self.level_choice.GetSelection() == 0:
             return
+        else:
+            level = self.level_choice.GetStringSelection()  # Get level chosen
 
         # Cache
         cache_folder = Cache.customized_directory()
@@ -168,7 +169,6 @@ class MainFrame(wx.Frame):
         self.subject_choice.SetSelection(0)
 
     def subject_chosen(self, event):
-        subject = self.subject_choice.GetStringSelection()  # Get subject chosen
         self.paper_checklist.Clear()
         self.year_choice.Clear()
         self.season_choice.Clear()
@@ -177,11 +177,13 @@ class MainFrame(wx.Frame):
         self.pairs_info = {}
         self.files_info = {}
 
+        subject_index = self.subject_choice.GetSelection()  # Get subject chosen
         # If no subject is chosen
-        try:
-            subject_url = self.subject_dict[subject]
-        except KeyError:
+        if subject_index == 0:
             return
+        else:
+            subject = self.subject_choice.GetStringSelection()
+            subject_url = self.subject_dict[subject]
 
         # Cache
         cache_folder = Cache.customized_directory()

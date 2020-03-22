@@ -54,6 +54,7 @@ pip3 install module_name -i https://pypi.douban.com/simple/
 ### 1.3.2
 
 * [New Function] Add default setting of initially loaded level
+* [Bug Fixed] Solve the issue that the app has no authority to access Cache folder on Mac
 
 ### 1.3.1 [Released]
 

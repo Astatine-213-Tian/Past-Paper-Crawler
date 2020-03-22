@@ -198,6 +198,7 @@ class MainFrame(wx.Frame):
         cache_paper = os.path.join(cache_folder, "GCE Guide %s" % subject)
         if not os.path.exists(cache_paper):
             self.paper_dict = Crawler.visit_subject(subject_url)  # Get paper list
+            print(self.paper_dict)
             if self.paper_dict == -1:  # Connection error
                 wx.MessageBox("Please check your Internet connection and retry.", "Connection Error")
                 self.subject_choice.SetSelection(0)
@@ -207,13 +208,11 @@ class MainFrame(wx.Frame):
         else:
             self.paper_dict = Cache.load(cache_paper)
 
-        sorted_file = sorted(self.paper_dict)
         qp, ms = [], []  # Store question paper and mark scheme for pairing
-
         years, nums, regions, types = [], [], [], []  # Store all exist year, paper number, and region
 
-        for file in sorted_file:
-            paper = Paper(file, self.paper_dict[file])
+        for file, url in self.paper_dict.items():
+            paper = Paper(file, url)
             if paper.year != "other" and int(paper.year) > 2004:
                 if paper.type == "qp":
                     qp.append(paper)

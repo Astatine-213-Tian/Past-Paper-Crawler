@@ -4,7 +4,6 @@ import re
 class Paper:
     def __init__(self, file_name, url):
         self.url = url
-        self.file_name = file_name
 
         self.season = "other"
         self.year = "other"
@@ -13,7 +12,7 @@ class Paper:
         self.region = "other"
 
         pattern = re.compile(r'\d{4}_(\S)(\d{2})_(\S{2})_*(\w*).')  # Pattern for matching the f_in (subject code, season, year, paper number, region number
-        match = re.match(pattern, self.file_name)
+        match = re.match(pattern, file_name)
 
         if match:
             result = match.groups()
@@ -38,6 +37,14 @@ class Paper:
                 else:
                     self.num = "Paper " + result[3][0]
                     self.region = "Region " + result[3][1]
+
+    # def __cmp__(self, other):
+    #     if self.year < other.year:
+    #         return -1
+    #     elif self.year == other.year:
+    #         if self.type == "other":
+    #             pass
+
 
 
 class Pair:  # Class for storing information of ms and qp in pairs

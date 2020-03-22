@@ -25,9 +25,7 @@ class Paper:
                 self.season = "November"
 
             self.year = "20" + result[1]
-
-            if result[2] in ["qp", "ms", "gt", "er", "ms", "sp"]:
-                self.type = result[2]
+            self.type = result[2]
 
             if result[3] and len(result[3]) <= 2:
                 if len(result[3]) == 1:

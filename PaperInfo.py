@@ -46,7 +46,6 @@ class Paper:
     #             pass
 
 
-
 class Pair:  # Class for storing information of ms and qp in pairs
     def __init__(self, qp, ms):
         self.url = [qp.url, ms.url]

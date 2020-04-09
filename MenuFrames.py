@@ -56,6 +56,7 @@ class PreferencesFrame(wx.Frame):
         self.init_UI()
         self.call = call
         self.Bind(wx.EVT_CLOSE, self.on_close, self)
+        self.refresh = False
 
     def init_UI(self):
         preference = wx.Notebook(self)
@@ -125,13 +126,14 @@ class GeneralPanel(wx.Panel):
 
     def on_choose_level(self, event):
         self.current_setting["Default level"] = self.level_choice.GetSelection()
-        print(self.level_choice.GetSelection())
         Cache.store(self.current_setting, self.config_path)
     
     def on_radio_button(self, event):
         choice = event.GetEventObject()
         if choice.GetLabel() == "Use default path":
             self.current_setting["Default path mode"] = True
+            if not self.current_setting["Default path"]:
+                self.on_change_path(None)
         else:
             self.current_setting["Default path mode"] = False
         Cache.store(self.current_setting, self.config_path)

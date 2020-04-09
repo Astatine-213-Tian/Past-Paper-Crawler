@@ -20,10 +20,7 @@ def load(directory):
 
 def cache_folder():
     path = os.getcwd()
-    if platform.system() == "Darwin":
-        cache_path = path + "/Cache"
-    else:
-        cache_path = "C:\\Users\\" + getpass.getuser() + "\\AppData\\Local\\Temp\\Teresa.PastPaperCrawler"
+    cache_path = os.path.join(path, "Cache")
 
     if not os.path.exists(cache_path):
         os.mkdir(cache_path)

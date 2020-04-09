@@ -33,8 +33,6 @@ pip3 install module_name -i https://pypi.douban.com/simple/
 
 # To do
 
-* Sort paper by year
-
 * Automatically check for new version of the software
 
 * Automatically check for update in cache
@@ -50,6 +48,14 @@ pip3 install module_name -i https://pypi.douban.com/simple/
 # Update log
 
 ## v 1.3
+
+### 1.3.3 [Released]
+
+* [New Function] Sorting papers by year first, then season, and other information
+* [Bug Fixed] Fixed the issue that when switching subject filter will not initialize
+* [Bug Fixed] Fixed the issue that when closing the preference frame, the main frame will be refreshed
+* [Bug Fixed] Fixed the issue the when choosing the default download path at the first time, the folder dialog does not pump out automatically
+* [Enhancement] Change the Cache folder for Windows version to a addition folder under the same working directory as the program does, as the files in the Cache folder may be cleaned by the system frequently
 
 ### 1.3.2
 

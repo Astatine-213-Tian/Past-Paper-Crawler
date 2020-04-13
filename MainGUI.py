@@ -427,7 +427,7 @@ class MainFrame(wx.Frame):
 class RetryFrame(wx.Dialog):  # New frame to display f_in that need to retry
     def __init__(self, parent, retry_files, call):
         wx.Dialog.__init__(self, parent, size=(300, 355))
-        hint = wx.StaticText(self, label="Failed to download:")
+        hint = wx.StaticText(self, label="Failed to download: ")
         self.retry_file = wx.CheckListBox(self, size=(-1, 250), choices=retry_files)
         self.retry_file.SetCheckedItems(range(len(retry_files)))
         retry_button = wx.Button(self, size=(75, -1), label="Retry")

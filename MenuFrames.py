@@ -10,7 +10,7 @@ class AboutFrame(wx.Frame):
         wx.Frame.__init__(self, None, -1, size=(300, 180), style=wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX)
 
         title = wx.StaticText(self, label=" Past Paper Crawler ")
-        version = wx.StaticText(self, label=" Version 1.3.1 ")
+        version = wx.StaticText(self, label=" Version 1.3.3 ")
         team = wx.StaticText(self, label=" Made by Teresa, John, Ethan, and Peter ")
         maintenance = wx.StaticText(self, label=" Currently maintained by Teresa ")
         copy_right = wx.StaticText(self, label=" Copyright © 2020 田青禾 ")

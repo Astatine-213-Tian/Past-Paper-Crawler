@@ -10,12 +10,7 @@ A crawler that can help you download CIE past paper from GCE guide.
 ### Pre-installation
 
 Environment required: python 3
-
-```
-pip3 install bs4
-pip3 install requests
-pip3 install wxpython
-```
+Check the file `requirments.txt` for other dependencies
 
 if the installation process is too slow, use alternative download address:
 
@@ -47,9 +42,13 @@ pip3 install module_name -i https://pypi.douban.com/simple/
 
 # Update log
 
+## v 1.4 [Released]
+* [Bug Fixed] Rewrite the crawling part to fit the new HTML structure of GCE Guide
+* [Enhancement] Implement async crawling when visiting year folders under specific subject
+
 ## v 1.3
 
-### 1.3.3 [Released]
+### 1.3.3 
 
 * [New Function] Sorting papers by year first, then season, and other information
 * [Bug Fixed] Fixed the issue that when switching subject filter will not initialize

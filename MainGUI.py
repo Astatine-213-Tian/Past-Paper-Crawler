@@ -58,7 +58,9 @@ class MainFrame(wx.Frame):
         select_all = wx.Button(self, label="Select All", size=(60, -1))  # Select all button
         self.Bind(wx.EVT_BUTTON, self.select_all, select_all)
 
-        self.ini_level()
+        config = Cache.load(self.preference_path)
+        self.level_choice.SetSelection(config["Default level"])
+        self.level_chosen(None)
 
         # Arranging boxes
         sizer_top = wx.BoxSizer(wx.HORIZONTAL)
@@ -121,11 +123,6 @@ class MainFrame(wx.Frame):
 
         self.SetMenuBar(menu_bar)
 
-    def ini_level(self):
-        config = Cache.load(self.preference_path)
-        self.level_choice.SetSelection(config["Default level"])
-        self.level_chosen(None)
-
     def on_about(self, event):
         about_frame = AboutFrame(self.rebind_about)
         about_frame.Show()
@@ -141,10 +138,8 @@ class MainFrame(wx.Frame):
 
     def rebind_preferences(self):
         self.Bind(wx.EVT_MENU, self.on_preferences, self.preferences)
-        self.ini_level()
 
-    def level_chosen(self, event):
-        self.subject_choice.Clear()
+    def init_choice(self):
         self.paper_checklist.Clear()
         self.year_choice.Clear()
         self.season_choice.Clear()
@@ -153,6 +148,11 @@ class MainFrame(wx.Frame):
         self.pairs_info = {}
         self.files_info = {}
 
+        self.year, self.season, self.num, self.region, self.type = "All years", "All seasons", "All papers", "All regions", "All types"  # Record the subject, season, num, region, chosen by the user
+
+    def level_chosen(self, event):
+        self.init_choice()
+        self.subject_choice.Clear()
         if self.level_choice.GetSelection() == 0:
             return
         else:
@@ -177,13 +177,7 @@ class MainFrame(wx.Frame):
         self.subject_choice.SetSelection(0)
 
     def subject_chosen(self, event):
-        self.paper_checklist.Clear()
-        self.year_choice.Clear()
-        self.season_choice.Clear()
-        self.num_choice.Clear()
-        self.region_choice.Clear()
-        self.pairs_info = {}
-        self.files_info = {}
+        self.init_choice()
 
         subject_index = self.subject_choice.GetSelection()  # Get subject chosen
         # If no subject is chosen
@@ -191,14 +185,13 @@ class MainFrame(wx.Frame):
             return
         else:
             subject = self.subject_choice.GetStringSelection()
-            subject_url = self.subject_dict[subject]
 
         # Cache
         cache_folder = Cache.customized_directory()
         cache_paper = os.path.join(cache_folder, "GCE Guide %s" % subject)
         if not os.path.exists(cache_paper):
+            subject_url = self.subject_dict[subject]
             self.paper_dict = Crawler.visit_subject(subject_url)  # Get paper list
-            print(self.paper_dict)
             if self.paper_dict == -1:  # Connection error
                 wx.MessageBox("Please check your Internet connection and retry.", "Connection Error")
                 self.subject_choice.SetSelection(0)
@@ -208,28 +201,31 @@ class MainFrame(wx.Frame):
         else:
             self.paper_dict = Cache.load(cache_paper)
 
-        qp, ms = [], []  # Store question paper and mark scheme for pairing
-        years, nums, regions, types = [], [], [], []  # Store all exist year, paper number, and region
+        years, nums, regions = [], [], []  # Store all exist year, paper number, and region
 
+        files_info = {}
         for file, url in self.paper_dict.items():
             paper = Paper(file, url)
-            if paper.year != "other" and int(paper.year) > 2004:
-                if paper.type == "qp":
-                    qp.append(paper)
-                elif paper.type == "ms":
-                    ms.append(paper)
-
-            self.files_info[file] = paper
+            files_info[file] = paper
             years.append(paper.year)
             nums.append(paper.num)
             regions.append(paper.region)
-            if paper.type != "other" and paper.type != "qp" and paper.type != "ms":
-                types.append(paper.type)
 
         year_list = ["All years"] + sorted(list(set(years)))
         season_list = ("All seasons", "March", "May/June", "November", "other")
         num_list = ["All papers"] + sorted(list(set(nums)))
         region_list = ["All regions"] + sorted(list(set(regions)))
+
+        files_info = sorted(files_info.items(), key=lambda files_info: (files_info[1].year, files_info[1].season_sort))
+        self.files_info = dict(files_info)
+
+        qp, ms = [], []  # Store question paper and mark scheme for pairing
+        for paper in self.files_info.values():
+            if paper.year != "other" and int(paper.year) > 2004:
+                if paper.type == "qp":
+                    qp.append(paper)
+                elif paper.type == "ms":
+                    ms.append(paper)
 
         for i in range(len(qp)):
             for each in ms:
@@ -431,7 +427,7 @@ class MainFrame(wx.Frame):
 class RetryFrame(wx.Dialog):  # New frame to display f_in that need to retry
     def __init__(self, parent, retry_files, call):
         wx.Dialog.__init__(self, parent, size=(300, 355))
-        hint = wx.StaticText(self, label="Failed to download:")
+        hint = wx.StaticText(self, label="Failed to download: ")
         self.retry_file = wx.CheckListBox(self, size=(-1, 250), choices=retry_files)
         self.retry_file.SetCheckedItems(range(len(retry_files)))
         retry_button = wx.Button(self, size=(75, -1), label="Retry")

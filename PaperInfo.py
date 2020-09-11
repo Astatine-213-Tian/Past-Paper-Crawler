@@ -4,8 +4,8 @@ import re
 class Paper:
     def __init__(self, file_name, url):
         self.url = url
-
         self.season = "other"
+        self.season_sort = 9
         self.year = "other"
         self.type = "other"
         self.num = "other"
@@ -19,10 +19,13 @@ class Paper:
 
             if result[0] == "m":
                 self.season = "March"
+                self.season_sort = 0
             elif result[0] == "s":
                 self.season = "May/June"
+                self.season_sort = 1
             elif result[0] == "w":
                 self.season = "November"
+                self.season_sort = 2
 
             self.year = "20" + result[1]
             self.type = result[2]
@@ -35,14 +38,6 @@ class Paper:
                 else:
                     self.num = "Paper " + result[3][0]
                     self.region = "Region " + result[3][1]
-
-    # def __cmp__(self, other):
-    #     if self.year < other.year:
-    #         return -1
-    #     elif self.year == other.year:
-    #         if self.type == "other":
-    #             pass
-
 
 
 class Pair:  # Class for storing information of ms and qp in pairs

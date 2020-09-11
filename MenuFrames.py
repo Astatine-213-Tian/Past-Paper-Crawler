@@ -10,7 +10,7 @@ class AboutFrame(wx.Frame):
         wx.Frame.__init__(self, None, -1, size=(300, 180), style=wx.SYSTEM_MENU | wx.CAPTION | wx.CLOSE_BOX)
 
         title = wx.StaticText(self, label=" Past Paper Crawler ")
-        version = wx.StaticText(self, label=" Version 1.3.1 ")
+        version = wx.StaticText(self, label=" Version 1.3.3 ")
         team = wx.StaticText(self, label=" Made by Teresa, John, Ethan, and Peter ")
         maintenance = wx.StaticText(self, label=" Currently maintained by Teresa ")
         copy_right = wx.StaticText(self, label=" Copyright © 2020 田青禾 ")
@@ -56,6 +56,7 @@ class PreferencesFrame(wx.Frame):
         self.init_UI()
         self.call = call
         self.Bind(wx.EVT_CLOSE, self.on_close, self)
+        self.refresh = False
 
     def init_UI(self):
         preference = wx.Notebook(self)
@@ -125,13 +126,14 @@ class GeneralPanel(wx.Panel):
 
     def on_choose_level(self, event):
         self.current_setting["Default level"] = self.level_choice.GetSelection()
-        print(self.level_choice.GetSelection())
         Cache.store(self.current_setting, self.config_path)
     
     def on_radio_button(self, event):
         choice = event.GetEventObject()
         if choice.GetLabel() == "Use default path":
             self.current_setting["Default path mode"] = True
+            if not self.current_setting["Default path"]:
+                self.on_change_path(None)
         else:
             self.current_setting["Default path mode"] = False
         Cache.store(self.current_setting, self.config_path)

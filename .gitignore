@@ -1,6 +1,5 @@
-/Test.py
-/Executable File
-/Icons
-/setup.py
-/Icon.icns
+/Resources
+/Cache
 /Cache/
+.gitignore
+/.idea

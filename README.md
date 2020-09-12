@@ -42,7 +42,7 @@ pip3 install module_name -i https://pypi.douban.com/simple/
 
 # Update log
 
-## v 1.4 [Released]
+## v 1.4 [[Released]](https://forum.scie.pro/topic/30/past-paper-crawler-python-version)
 * [Bug Fixed] Rewrite the crawling part to fit the new HTML structure of GCE Guide
 * [Enhancement] Implement async crawling when visiting year folders under specific subject
 

@@ -179,7 +179,7 @@ class CachePanel(wx.Panel):
         cache_sizer = wx.BoxSizer(wx.VERTICAL)
         cache_sizer.Add(explain_txt, flag=wx.ALL, border=10)
         cache_sizer.Add(open_cache_sizer, flag=wx.BOTTOM | wx.LEFT | wx.RIGHT, border=10)
-        cache_sizer.Add(self.cache_checklist, flag=wx.ALIGN_CENTER_HORIZONTAL | wx.EXPAND | wx.BOTTOM | wx.LEFT | wx.RIGHT,
+        cache_sizer.Add(self.cache_checklist, flag=wx.EXPAND | wx.BOTTOM | wx.LEFT | wx.RIGHT,
                         border=10)
         cache_sizer.Add(button_sizer, flag=wx.ALIGN_RIGHT | wx.BOTTOM | wx.LEFT | wx.RIGHT, border=10)
         self.SetSizer(cache_sizer)

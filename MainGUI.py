@@ -70,7 +70,7 @@ class MainFrame(wx.Frame):
         sizer_bottom = wx.BoxSizer(wx.HORIZONTAL)
 
         sizer_top.Add(self.level_choice, proportion=1, flag= wx.RIGHT, border=15)
-        sizer_top.Add(self.subject_choice, proportion=1, flag=wx.ALIGN_RIGHT)
+        sizer_top.Add(self.subject_choice, proportion=1, flag=wx.RIGHT)
 
         sizer_filter.Add(txt_filter, proportion=0, flag=wx.ALIGN_CENTER_VERTICAL, border=10)
         sizer_filter.Add(self.year_choice, proportion=1, flag=wx.LEFT, border=10)
@@ -85,7 +85,7 @@ class MainFrame(wx.Frame):
         sizer_bottom.Add(self.style_choice, proportion=1, flag=wx.ALIGN_LEFT)
         sizer_bottom.Add(self.type_choice, proportion=1, flag=wx.LEFT | wx.RESERVE_SPACE_EVEN_IF_HIDDEN, border=5)
         sizer_bottom.Add(select_all, proportion=1, flag=wx.LEFT, border=15)
-        sizer_bottom.Add(download, proportion=1, flag=wx.ALIGN_RIGHT | wx.LEFT, border=5)
+        sizer_bottom.Add(download, proportion=1, flag=wx.RIGHT | wx.LEFT, border=5)
 
         sizer_all = wx.BoxSizer(wx.VERTICAL)
         side_border = 25

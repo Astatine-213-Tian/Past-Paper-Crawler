@@ -3,6 +3,7 @@ import ssl
 import urllib.request as rq
 import urllib.error
 import time
+import os
 
 ssl._create_default_https_context = ssl._create_unverified_context
 forge_agent_header = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0'}
@@ -24,21 +25,26 @@ def _download_single(url, to, id):
     :param to: Full directory. Includes f_in and its suffix. e.g. ./files/9709_s16_ms_21.pdf
     :return: None
     """
+    if os.path.exists(to):
+        error_flags[id] = 1
+        return
 
     try:
         request = rq.Request(url=url, headers=forge_agent_header)
         info = rq.urlopen(request).read()
 
     except urllib.error.URLError as e:
+        print(url, 'urllib error')
         error_flags[id] = 2
         return
 
     except Exception as e:
-        # print(e)
+        print(url, e)
         error_flags[id] = 2
         return
 
     with open(to, "wb") as file:
+        print(url, 'writing')
         file.write(info)
 
     error_flags[id] = 1

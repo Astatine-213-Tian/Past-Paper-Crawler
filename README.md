@@ -34,8 +34,6 @@ pip3 install module_name -i https://pypi.douban.com/simple/
 
 * Allow multiple selection in filter
 
-* Skip downloaded file
-
 * Allow option - create folder for each type of paper
 
   
@@ -43,6 +41,12 @@ pip3 install module_name -i https://pypi.douban.com/simple/
 # Update log
 
 ## v 1.4 [[Released]](https://forum.scie.pro/topic/30/past-paper-crawler-python-version)
+
+### 1.4.1
+* [Bug Fixed] Fixed a bug that result in C++ assertion Error
+* [Enhancement] Skip downloaded file
+
+### 1.4.0
 * [Bug Fixed] Rewrite the crawling part to fit the new HTML structure of GCE Guide
 * [Enhancement] Implement async crawling when visiting year folders under specific subject
 

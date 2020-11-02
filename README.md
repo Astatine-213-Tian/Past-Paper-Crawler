@@ -22,7 +22,7 @@ pip3 install module_name -i https://pypi.douban.com/simple/
 
 ### After download
 
-1. Run the script `MainGUI.py`
+Run the script `MainGUI.py`
 
 
 
@@ -40,7 +40,7 @@ pip3 install module_name -i https://pypi.douban.com/simple/
 
 # Update log
 
-## v 1.4 [[Released]](https://forum.scie.pro/topic/30/past-paper-crawler-python-version)
+## v 1.4 [[Released]]
 
 ### 1.4.1
 * [Bug Fixed] Fixed a bug that result in C++ assertion Error

@@ -40,7 +40,7 @@ Run the script `MainGUI.py`
 
 # Update log
 
-## v 1.4 [[Released]]
+## v 1.4 [Released]
 
 ### 1.4.1
 * [Bug Fixed] Fixed a bug that result in C++ assertion Error
